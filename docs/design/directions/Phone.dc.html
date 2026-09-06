@@ -16,11 +16,16 @@
     .mg a:hover { color: #8a6720; }
     .mg .lab { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
     .mg .ul { padding-bottom: 4px; }
-    .mg img.portrait { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; filter: grayscale(1) contrast(1.05); }
+    .mg .frame { position: relative; }
+    .mg .frame::before { content: ''; position: absolute; inset: 0; transform: translate(14px, 14px); border-radius: 15px; border: 1px solid; opacity: .55; pointer-events: none; }
+    .mg img.portrait { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; border-radius: 15px; filter: grayscale(1) contrast(1.05); }
+    .mg .col { border-radius: 18px; }
+    .mg .glow { position: absolute; top: -220px; right: -160px; width: 720px; height: 720px; border-radius: 50%; pointer-events: none; filter: blur(40px); }
   </style>
 </helmet>
-<div class="mg" style="width: 390px; min-height: 1700px; background: {{t.bg}}; color: {{t.fg}}; display: flex; flex-direction: column;">
-  <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px;">
+<div class="mg" style="width: 390px; min-height: 1700px; background: {{t.bg}}; color: {{t.fg}}; display: flex; flex-direction: column; position: relative; overflow: hidden;">
+  <div class="glow" style="background: {{t.glow}}; top: -260px; right: -300px;"></div>
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; position: relative;">
     <div class="serif" style="font-size: 19px;">Nicolas Chapados</div>
     <div style="display: flex; gap: 16px; align-items: center; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;">
       <span style="color: {{t.acc}};">EN</span><a href="#" style="color: {{t.mute}};">FR</a>
@@ -28,7 +33,7 @@
     </div>
   </div>
   <div style="display: flex; flex-direction: column; gap: 24px; padding: 16px 24px 40px 24px;">
-    <img class="portrait" src="portrait.jpg" alt="Nicolas Chapados speaking on stage" style="width: 200px; aspect-ratio: 4 / 5;">
+    <div class="frame" style="color: {{t.acc}}; width: 200px;"><img class="portrait" src="portrait.jpg" alt="Nicolas Chapados speaking on stage" style="box-shadow: {{t.shadow}};"></div>
     <div class="lab" style="color: {{t.mute}};">Machine learning · Forecasting · Enterprise AI</div>
     <h1 style="margin: 0; font-size: 40px; line-height: 1.08; font-weight: 300; text-wrap: pretty;">Building learning machines, <em style="color: {{t.acc}};">then the companies around them.</em></h1>
     <p style="margin: 0; font-size: 16px; line-height: 1.6; color: {{t.sub}}; text-wrap: pretty;">Co-founder and Chief Scientist at Nera Software. Adjunct Professor at Polytechnique Montréal and Associate Industry Member of Mila. Previously VP Research at ServiceNow. Co-founder of Element AI, Imagia, ApSTAT and Chapados Couture Capital.</p>
@@ -71,8 +76,8 @@ class Component extends DCLogic {
   renderVals() {
     const dark = (this.props.theme ?? 'dark') !== 'light';
     const t = dark
-      ? { bg: '#101418', fg: '#e7e2d8', sub: '#b8b4ab', mute: '#8d9199', acc: '#d3b26a', line: '#2a3037', card: '#151a20' }
-      : { bg: '#f4f1ea', fg: '#14181c', sub: '#4a453e', mute: '#7a746b', acc: '#8f6b25', line: '#d8d2c6', card: '#faf8f3' };
+      ? { bg: '#101418', fg: '#e7e2d8', sub: '#b8b4ab', mute: '#8d9199', acc: '#d3b26a', line: '#2a3037', card: '#151a20', glow: 'radial-gradient(closest-side, rgba(211,178,106,0.10), rgba(211,178,106,0))', shadow: '0 30px 60px -24px rgba(0,0,0,0.75), 0 8px 20px -8px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04)', cardshadow: '0 18px 40px -28px rgba(0,0,0,0.7)' }
+      : { bg: '#f4f1ea', fg: '#14181c', sub: '#4a453e', mute: '#7a746b', acc: '#8f6b25', line: '#d8d2c6', card: '#faf8f3', glow: 'radial-gradient(closest-side, rgba(143,107,37,0.12), rgba(143,107,37,0))', shadow: '0 30px 60px -24px rgba(20,24,28,0.35), 0 8px 20px -8px rgba(20,24,28,0.18), 0 0 0 1px rgba(20,24,28,0.05)', cardshadow: '0 18px 40px -30px rgba(20,24,28,0.25)' };
     return { t };
   }
 }
