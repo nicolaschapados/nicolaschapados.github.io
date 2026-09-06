@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+  <style>
+    body { margin: 0; background: #ffffff; }
+    .sg { font-family: 'Instrument Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #111111; font-feature-settings: 'tnum'; }
+    .sg a { color: #111111; text-decoration: none; }
+    .sg a:hover { color: #1d4ed8; }
+    .sg .num { color: #1d4ed8; font-weight: 500; }
+    .sg .label { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: #6b6b6b; }
+    .sg .rule { border-top: 1px solid #111111; }
+  </style>
+</helmet>
+<div class="sg" style="width: 1200px; min-height: 1500px; background: #ffffff; display: flex; flex-direction: column; padding: 0 48px; box-sizing: border-box;">
+  <div class="rule" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; padding: 20px 0; margin-top: 24px; font-size: 15px; font-weight: 500;">
+    <div style="grid-column: span 3;">Nicolas Chapados</div>
+    <div style="grid-column: span 6; display: flex; gap: 32px;"><a href="#">About</a><a href="#">Publications</a><a href="#">Talks</a><a href="#">Blog</a></div>
+    <div style="grid-column: span 3; display: flex; justify-content: flex-end; gap: 8px;"><span style="border-bottom: 2px solid #111;">EN</span><a href="#" style="color: #6b6b6b;">FR</a></div>
+  </div>
+  <div class="rule" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; padding: 40px 0 64px 0;">
+    <div style="grid-column: span 9;">
+      <h1 style="margin: 0; font-size: 96px; line-height: 0.98; letter-spacing: -0.035em; font-weight: 600; text-wrap: balance;">Machine learning<br>for hard decisions.</h1>
+    </div>
+    <div style="grid-column: span 3; display: flex; flex-direction: column; gap: 16px; justify-content: flex-end; font-size: 15px; line-height: 1.45;">
+      <div><div class="label">Now</div>Co-Founder &amp; Chief Scientist, Nera Software</div>
+      <div><div class="label">Academic</div>Adjunct Professor, Polytechnique Montréal<br>Associate Industry Member, Mila</div>
+      <div><div class="label">Formerly</div>VP Research, ServiceNow · Element AI · Imagia · ApSTAT</div>
+    </div>
+  </div>
+  <div class="rule" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; padding: 32px 0 48px 0;">
+    <div style="grid-column: span 3; display: flex; flex-direction: column; gap: 8px;">
+      <div class="label">Record</div>
+      <div style="font-size: 44px; line-height: 1; font-weight: 600; letter-spacing: -0.02em;">85</div><div style="font-size: 14px; color: #6b6b6b;">publications</div>
+    </div>
+    <div style="grid-column: span 3; display: flex; flex-direction: column; gap: 8px;">
+      <div class="label">&nbsp;</div>
+      <div style="font-size: 44px; line-height: 1; font-weight: 600; letter-spacing: -0.02em;">24</div><div style="font-size: 14px; color: #6b6b6b;">invited talks</div>
+    </div>
+    <div style="grid-column: span 3; display: flex; flex-direction: column; gap: 8px;">
+      <div class="label">&nbsp;</div>
+      <div style="font-size: 44px; line-height: 1; font-weight: 600; letter-spacing: -0.02em;">6</div><div style="font-size: 14px; color: #6b6b6b;">patent families</div>
+    </div>
+    <div style="grid-column: span 3; display: flex; flex-direction: column; gap: 8px;">
+      <div class="label">&nbsp;</div>
+      <div style="font-size: 44px; line-height: 1; font-weight: 600; letter-spacing: -0.02em;">4</div><div style="font-size: 14px; color: #6b6b6b;">companies co-founded</div>
+    </div>
+  </div>
+  <div class="rule" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; padding: 32px 0 48px 0;">
+    <div style="grid-column: span 3;"><div class="label">Selected publications</div></div>
+    <div style="grid-column: span 9; display: flex; flex-direction: column;">
+      <div style="display: grid; grid-template-columns: 64px 1fr 200px; gap: 24px; padding: 14px 0; border-bottom: 1px solid #e2e2e2; font-size: 17px; line-height: 1.35;"><span class="num">2024</span><a href="#">LLM2Vec: Large language models are secretly powerful text encoders</a><span style="color: #6b6b6b; font-size: 14px;">COLM</span></div>
+      <div style="display: grid; grid-template-columns: 64px 1fr 200px; gap: 24px; padding: 14px 0; border-bottom: 1px solid #e2e2e2; font-size: 17px; line-height: 1.35;"><span class="num">2024</span><a href="#">WorkArena: How capable are web agents at solving common knowledge work tasks?</a><span style="color: #6b6b6b; font-size: 14px;">ICML</span></div>
+      <div style="display: grid; grid-template-columns: 64px 1fr 200px; gap: 24px; padding: 14px 0; border-bottom: 1px solid #e2e2e2; font-size: 17px; line-height: 1.35;"><span class="num">2024</span><a href="#">StarCoder 2 and The Stack v2: The next generation</a><span style="color: #6b6b6b; font-size: 14px;">BigCode</span></div>
+      <div style="display: grid; grid-template-columns: 64px 1fr 200px; gap: 24px; padding: 14px 0; border-bottom: 1px solid #e2e2e2; font-size: 17px; line-height: 1.35;"><span class="num">2020</span><a href="#">N-BEATS: Neural basis expansion analysis for interpretable time series forecasting</a><span style="color: #6b6b6b; font-size: 14px;">ICLR</span></div>
+      <div style="padding: 14px 0; font-size: 15px;"><a href="#" style="color: #1d4ed8;">All publications →</a></div>
+    </div>
+  </div>
+  <div class="rule" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; padding: 32px 0 48px 0;">
+    <div style="grid-column: span 3;"><div class="label">Blog</div></div>
+    <div style="grid-column: span 5; display: flex; flex-direction: column; gap: 10px;">
+      <a href="#" style="font-size: 26px; line-height: 1.2; font-weight: 500; letter-spacing: -0.01em;">[FIRST POST TITLE]</a>
+      <div style="font-size: 15px; color: #6b6b6b; line-height: 1.45;">[One-sentence dek.] · [DATE]</div>
+    </div>
+    <div style="grid-column: 10 / span 3; display: flex; flex-direction: column; gap: 10px;">
+      <div class="label">Next talk</div>
+      <div style="font-size: 15px; line-height: 1.45;">[NEXT TALK TITLE]<br><span style="color: #6b6b6b;">[VENUE] · [DATE]</span></div>
+      <a href="#" style="font-size: 15px; color: #1d4ed8;">CV (PDF)</a>
+    </div>
+  </div>
+  <div class="rule" style="display: flex; justify-content: space-between; padding: 20px 0 40px 0; font-size: 13px; color: #6b6b6b; margin-top: auto;">
+    <div style="display: flex; gap: 20px;"><a href="#">Email</a><a href="#">Scholar</a><a href="#">LinkedIn</a><a href="#">Bluesky</a><a href="#">X</a><a href="#">GitHub</a><a href="#">RSS</a></div>
+    <div>chapados.ca</div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

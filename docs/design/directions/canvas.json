@@ -1,0 +1,108 @@
+{
+  "pages": [
+    {
+      "id": "page-1",
+      "name": "Landing"
+    },
+    {
+      "id": "page-2",
+      "name": "Directions A to F"
+    }
+  ],
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "title": "Landing \u00b7 dark",
+      "x": 0,
+      "y": 0,
+      "w": 1200,
+      "h": 1560,
+      "page": "page-1"
+    },
+    {
+      "file": "MainLight.dc.html",
+      "title": "Landing \u00b7 light",
+      "x": 1320,
+      "y": 0,
+      "w": 1200,
+      "h": 1560,
+      "page": "page-1"
+    },
+    {
+      "file": "Phone.dc.html",
+      "title": "Phone \u00b7 dark",
+      "x": 2640,
+      "y": 0,
+      "w": 390,
+      "h": 1700,
+      "page": "page-1"
+    },
+    {
+      "file": "Legend.dc.html",
+      "title": "Legend",
+      "x": 0,
+      "y": 0,
+      "w": 560,
+      "h": 1500,
+      "page": "page-2"
+    },
+    {
+      "file": "QuietJournal.dc.html",
+      "title": "A \u00b7 Quiet Journal",
+      "x": 680,
+      "y": 0,
+      "w": 1200,
+      "h": 1500,
+      "page": "page-2"
+    },
+    {
+      "file": "SwissGrid.dc.html",
+      "title": "B \u00b7 Swiss Grid",
+      "x": 2000,
+      "y": 0,
+      "w": 1200,
+      "h": 1500,
+      "page": "page-2"
+    },
+    {
+      "file": "Monograph.dc.html",
+      "title": "C \u00b7 Monograph (chosen)",
+      "x": 3320,
+      "y": 0,
+      "w": 1200,
+      "h": 1500,
+      "page": "page-2"
+    },
+    {
+      "file": "LabNotebook.dc.html",
+      "title": "D \u00b7 Lab Notebook",
+      "x": 680,
+      "y": 1660,
+      "w": 1200,
+      "h": 1500,
+      "page": "page-2"
+    },
+    {
+      "file": "BoldType.dc.html",
+      "title": "E \u00b7 Bold Type",
+      "x": 2000,
+      "y": 1660,
+      "w": 1200,
+      "h": 1500,
+      "page": "page-2"
+    },
+    {
+      "file": "Index.dc.html",
+      "title": "F \u00b7 Index",
+      "x": 3320,
+      "y": 1660,
+      "w": 1200,
+      "h": 1500,
+      "page": "page-2"
+    }
+  ],
+  "launch": {
+    "view": "canvas",
+    "page": "page-1"
+  }
+}

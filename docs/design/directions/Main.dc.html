@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=IBM+Plex+Sans:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; }
+    .mg { font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif; }
+    .mg .serif, .mg h1, .mg h2 { font-family: 'Newsreader', Georgia, 'Times New Roman', serif; }
+    .mg a { color: #b48a3a; text-decoration: none; }
+    .mg a:hover { color: #8a6720; }
+    .mg .lab { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
+    .mg .ul { padding-bottom: 4px; }
+    .mg img.portrait { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; filter: grayscale(1) contrast(1.05); }
+  </style>
+</helmet>
+<div class="mg" style="width: 1200px; min-height: 1560px; background: {{t.bg}}; color: {{t.fg}}; display: flex; flex-direction: column;">
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 32px 96px;">
+    <div class="serif" style="font-size: 22px; letter-spacing: 0.02em;">Nicolas Chapados</div>
+    <div style="display: flex; gap: 36px; align-items: center; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase;">
+      <a href="#" style="color: {{t.fg}};">About</a><a href="#" style="color: {{t.fg}};">Publications</a><a href="#" style="color: {{t.fg}};">Talks</a><a href="#" style="color: {{t.fg}};">Blog</a>
+      <div style="display: flex; gap: 10px; padding-left: 12px; border-left: 1px solid {{t.line}};"><span style="color: {{t.acc}};">EN</span><a href="#" style="color: {{t.mute}};">FR</a></div>
+    </div>
+  </div>
+  <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 64px; padding: 56px 96px 88px 96px; align-items: center;">
+    <img class="portrait" src="portrait.jpg" alt="Nicolas Chapados speaking on stage">
+    <div style="display: flex; flex-direction: column; gap: 32px;">
+      <div class="lab" style="color: {{t.mute}};">Machine learning · Forecasting · Enterprise AI</div>
+      <h1 style="margin: 0; font-size: 64px; line-height: 1.05; font-weight: 300; letter-spacing: -0.01em; text-wrap: pretty;">Building learning machines, <em style="color: {{t.acc}};">then the companies around them.</em></h1>
+      <p style="margin: 0; font-size: 18px; line-height: 1.6; color: {{t.sub}}; max-width: 540px; text-wrap: pretty;">Co-founder and Chief Scientist at Nera Software. Adjunct Professor at Polytechnique Montréal and Associate Industry Member of Mila. Previously VP Research at ServiceNow and co-founder of Element AI, Imagia, ApSTAT and Chapados Couture Capital.</p>
+      <div style="display: flex; gap: 32px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;">
+        <a href="#" class="ul" style="border-bottom: 1px solid {{t.acc}}; color: {{t.acc}};">Biography</a>
+        <a href="#" class="ul" style="border-bottom: 1px solid {{t.line}}; color: {{t.fg}};">CV · PDF</a>
+      </div>
+    </div>
+  </div>
+  <div style="border-top: 1px solid {{t.line}}; margin: 0 96px;"></div>
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; padding: 0 96px;">
+    <div style="display: flex; flex-direction: column; gap: 18px; padding: 48px 40px 48px 0; border-right: 1px solid {{t.line}};">
+      <div class="lab" style="color: {{t.mute}};">Selected work</div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div><a href="#" class="serif" style="font-size: 22px; line-height: 1.3; color: {{t.fg}};">N-BEATS</a><div style="font-size: 14px; color: {{t.mute}};">Interpretable time-series forecasting · ICLR 2020</div></div>
+        <div><a href="#" class="serif" style="font-size: 22px; line-height: 1.3; color: {{t.fg}};">StarCoder 2</a><div style="font-size: 14px; color: {{t.mute}};">Open code models with BigCode · 2024</div></div>
+        <div><a href="#" class="serif" style="font-size: 22px; line-height: 1.3; color: {{t.fg}};">LLM2Vec</a><div style="font-size: 14px; color: {{t.mute}};">LLMs as text encoders · COLM 2024</div></div>
+        <div><a href="#" class="serif" style="font-size: 22px; line-height: 1.3; color: {{t.fg}};">WorkArena</a><div style="font-size: 14px; color: {{t.mute}};">Web agents on knowledge work · ICML 2024</div></div>
+      </div>
+      <a href="#" class="lab" style="color: {{t.acc}};">All 85 publications</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 18px; padding: 48px 40px; border-right: 1px solid {{t.line}};">
+      <div class="lab" style="color: {{t.mute}};">From the blog</div>
+      <a href="#" class="serif" style="font-size: 28px; line-height: 1.25; color: {{t.fg}};">[FIRST POST TITLE]</a>
+      <p style="margin: 0; font-size: 15px; line-height: 1.6; color: {{t.sub}};">[One or two sentences introducing the first popularization post: the question it answers, and for whom.]</p>
+      <div style="font-size: 13px; color: {{t.mute}};">[DATE] · [READING TIME]</div>
+      <a href="#" class="lab" style="color: {{t.acc}}; margin-top: auto;">All posts</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 18px; padding: 48px 0 48px 40px;">
+      <div class="lab" style="color: {{t.mute}};">Speaking</div>
+      <div><a href="#" class="serif" style="font-size: 22px; line-height: 1.3; color: {{t.fg}};">[NEXT TALK TITLE]</a><div style="font-size: 14px; color: {{t.mute}};">[VENUE] · [DATE]</div></div>
+      <div><a href="#" class="serif" style="font-size: 22px; line-height: 1.3; color: {{t.fg}};">NVIDIA GTC 2025</a><div style="font-size: 14px; color: {{t.mute}};">San José · March 2025 · recording</div></div>
+      <div><a href="#" class="serif" style="font-size: 22px; line-height: 1.3; color: {{t.fg}};">AI Agents for Enterprise Workflows</a><div style="font-size: 14px; color: {{t.mute}};">UC Berkeley LLM Agents course · October 2024 · recording</div></div>
+      <a href="#" class="lab" style="color: {{t.acc}}; margin-top: auto;">All 24 talks</a>
+    </div>
+  </div>
+  <div style="border-top: 1px solid {{t.line}}; margin: 0 96px;"></div>
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 28px 96px 48px 96px; font-size: 13px; color: {{t.mute}}; margin-top: auto;">
+    <div style="display: flex; gap: 24px;"><a href="#" style="color: {{t.mute}};">Email</a><a href="#" style="color: {{t.mute}};">Google Scholar</a><a href="#" style="color: {{t.mute}};">LinkedIn</a><a href="#" style="color: {{t.mute}};">Bluesky</a><a href="#" style="color: {{t.mute}};">X</a><a href="#" style="color: {{t.mute}};">GitHub</a><a href="#" style="color: {{t.mute}};">OpenReview</a><a href="#" style="color: {{t.mute}};">RSS</a></div>
+    <div>Montréal · chapados.ca · © 2026</div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"dark","section":"Appearance"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const dark = (this.props.theme ?? 'dark') !== 'light';
+    const t = dark
+      ? { bg: '#101418', fg: '#e7e2d8', sub: '#b8b4ab', mute: '#8d9199', acc: '#d3b26a', line: '#2a3037', card: '#151a20' }
+      : { bg: '#f4f1ea', fg: '#14181c', sub: '#4a453e', mute: '#7a746b', acc: '#8f6b25', line: '#d8d2c6', card: '#faf8f3' };
+    return { t };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    body { margin: 0; background: #f4f5f7; }
+    .ix { font-family: 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif; color: #1c1f24; font-feature-settings: 'tnum'; }
+    .ix .mono { font-family: 'JetBrains Mono', Menlo, Consolas, monospace; font-size: 12px; color: #6b7280; letter-spacing: 0.02em; }
+    .ix a { color: #1c1f24; text-decoration: none; }
+    .ix a:hover { color: #0f5fa8; }
+    .ix .side a { color: #4b5160; }
+    .ix .side a.on { color: #1c1f24; font-weight: 600; }
+    .ix .row { display: grid; grid-template-columns: 56px 1fr 120px 80px; gap: 16px; padding: 10px 0; border-bottom: 1px solid #e3e5ea; font-size: 15px; line-height: 1.35; align-items: baseline; }
+    .ix .pill { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4b5160; background: #e9ebef; padding: 2px 6px; border-radius: 3px; }
+  </style>
+</helmet>
+<div class="ix" style="width: 1200px; min-height: 1500px; background: #f4f5f7; display: grid; grid-template-columns: 240px 1fr;">
+  <div class="side" style="background: #ffffff; border-right: 1px solid #e3e5ea; padding: 32px 28px; display: flex; flex-direction: column; gap: 32px;">
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="width: 72px; height: 72px; border-radius: 50%; background: #d8dbe1; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 10px;" class="mono">[PHOTO]</div>
+      <div style="font-size: 18px; font-weight: 600; letter-spacing: -0.01em;">Nicolas Chapados</div>
+      <div style="font-size: 13px; line-height: 1.5; color: #4b5160;">Chief Scientist, Nera Software<br>Adjunct Prof., Polytechnique Montréal<br>Associate Industry Member, Mila</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px;"><a href="#" class="on">Overview</a><a href="#">About</a><a href="#">Publications</a><a href="#">Talks</a><a href="#">Blog</a><a href="#">CV (PDF)</a></div>
+    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px;"><div class="mono">links</div><a href="#">Email</a><a href="#">Google Scholar</a><a href="#">LinkedIn</a><a href="#">Bluesky</a><a href="#">X</a><a href="#">GitHub</a><a href="#">OpenReview</a><a href="#">RSS</a></div>
+    <div class="mono" style="margin-top: auto; display: flex; gap: 8px;"><span style="color: #1c1f24;">EN</span><a href="#">FR</a></div>
+  </div>
+  <div style="padding: 40px 56px; display: flex; flex-direction: column; gap: 40px;">
+    <div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
+      <div class="mono">overview</div>
+      <h1 style="margin: 0; font-size: 34px; line-height: 1.2; font-weight: 500; letter-spacing: -0.02em; text-wrap: pretty;">Machine learning researcher and company builder. Time-series forecasting, decision-making, enterprise AI agents.</h1>
+      <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #4b5160;">Formerly VP Research at ServiceNow; co-founder of Element AI, Imagia, ApSTAT and Chapados Couture Capital. PhD, Université de Montréal, with Yoshua Bengio. CFA.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline;"><div class="mono">recent publications</div><a href="#" style="font-size: 13px; color: #0f5fa8;">all 85 →</a></div>
+        <div class="row"><span class="mono">2026</span><a href="#">[MOST RECENT PUBLICATION]</a><span class="pill">preprint</span><span class="mono">pdf</span></div>
+        <div class="row"><span class="mono">2025</span><a href="#">Apriel-1.5-15B-Thinker: Mid-training is all you need</a><span class="pill">report</span><span class="mono">pdf</span></div>
+        <div class="row"><span class="mono">2024</span><a href="#">LLM2Vec: Large language models are secretly powerful text encoders</a><span class="pill">COLM</span><span class="mono">pdf</span></div>
+        <div class="row"><span class="mono">2024</span><a href="#">WorkArena: How capable are web agents at solving common knowledge work tasks?</a><span class="pill">ICML</span><span class="mono">pdf</span></div>
+        <div class="row"><span class="mono">2024</span><a href="#">StarCoder 2 and The Stack v2: The next generation</a><span class="pill">report</span><span class="mono">pdf</span></div>
+        <div class="row"><span class="mono">2020</span><a href="#">N-BEATS: Neural basis expansion analysis for interpretable time series forecasting</a><span class="pill">ICLR</span><span class="mono">pdf</span></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 32px;">
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;"><div class="mono">blog</div><a href="#" style="font-size: 13px; color: #0f5fa8;">all posts →</a></div>
+          <div class="row" style="grid-template-columns: 96px 1fr;"><span class="mono">[DATE]</span><div><a href="#" style="font-weight: 500;">[FIRST POST TITLE]</a><div style="font-size: 14px; color: #4b5160; margin-top: 4px;">[One-sentence dek.]</div></div></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;"><div class="mono">talks</div><a href="#" style="font-size: 13px; color: #0f5fa8;">all 24 →</a></div>
+          <div class="row" style="grid-template-columns: 96px 1fr;"><span class="mono">[DATE]</span><div><a href="#">[NEXT TALK TITLE]</a><div style="font-size: 14px; color: #4b5160; margin-top: 4px;">[VENUE]</div></div></div>
+          <div class="row" style="grid-template-columns: 96px 1fr;"><span class="mono">2025-03</span><div><a href="#">NVIDIA GTC 2025 session</a><div style="font-size: 14px; color: #4b5160; margin-top: 4px;">San Jose · recording</div></div></div>
+          <div class="row" style="grid-template-columns: 96px 1fr;"><span class="mono">2024-10</span><div><a href="#">AI Agents for Enterprise Workflows</a><div style="font-size: 14px; color: #4b5160; margin-top: 4px;">UC Berkeley LLM Agents course · recording</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="mono" style="margin-top: auto;">last updated [DATE] from the cv · chapados.ca</div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

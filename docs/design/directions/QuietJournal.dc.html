@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Source+Sans+3:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; background: #f6f2ea; }
+    .qj { font-family: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif; color: #2a2622; }
+    .qj h1, .qj h2, .qj .serif { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
+    .qj a { color: #8a3b2a; text-decoration: none; }
+    .qj a:hover { color: #5e2419; text-decoration: underline; }
+    .qj .sc { font-variant: all-small-caps; letter-spacing: 0.08em; font-weight: 600; font-size: 15px; color: #7a726a; }
+    .qj hr { border: 0; border-top: 1px solid #d9d1c4; margin: 0; }
+  </style>
+</helmet>
+<div class="qj" style="width: 1200px; min-height: 1500px; background: #f6f2ea; display: flex; flex-direction: column;">
+  <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 36px 120px 0 120px;">
+    <div class="serif" style="font-size: 20px; font-weight: 600;">Nicolas Chapados</div>
+    <div style="display: flex; gap: 32px; font-size: 16px;">
+      <a href="#">About</a><a href="#">Publications</a><a href="#">Talks</a><a href="#">Blog</a>
+      <span style="color: #b5aca0;">|</span>
+      <span><strong>EN</strong> <span style="color: #b5aca0;">/</span> <a href="#">FR</a></span>
+    </div>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; padding: 120px 120px 80px 120px; align-items: start;">
+    <div style="grid-column: span 7; display: flex; flex-direction: column; gap: 28px;">
+      <div class="sc">Machine learning · Forecasting · Enterprise AI</div>
+      <h1 style="margin: 0; font-size: 60px; line-height: 1.08; font-weight: 400; letter-spacing: -0.01em; text-wrap: pretty;">Research on learning systems that make good decisions, and the companies that put them to work.</h1>
+      <p style="margin: 0; font-size: 20px; line-height: 1.55; max-width: 560px; color: #4a443d; text-wrap: pretty;">Co-founder and Chief Scientist at Nera Software. Adjunct Professor at Polytechnique Montréal and Associate Industry Member of Mila. Formerly VP Research at ServiceNow and co-founder of Element AI and Imagia.</p>
+      <div style="display: flex; gap: 28px; align-items: center; font-size: 16px;">
+        <a href="#" style="border-bottom: 1px solid #8a3b2a;">Read the biography</a>
+        <a href="#">Curriculum vitæ (PDF)</a>
+      </div>
+    </div>
+    <div style="grid-column: 9 / span 4; display: flex; flex-direction: column; gap: 12px;">
+      <div style="width: 100%; aspect-ratio: 4 / 5; background: #ddd3c4; border-radius: 2px; display: flex; align-items: center; justify-content: center; color: #8a7f72; font-size: 14px;">[PORTRAIT]</div>
+      <div style="font-size: 13px; color: #8a7f72; font-style: italic;" class="serif">Montréal, Québec</div>
+    </div>
+  </div>
+  <hr style="margin: 0 120px;">
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; padding: 56px 120px;">
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div class="sc">Latest from the blog</div>
+      <h2 style="margin: 0; font-size: 26px; line-height: 1.25; font-weight: 500;"><a href="#" style="color: #2a2622;">[FIRST POST TITLE]</a></h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #5a534b;">[One-sentence dek for the first popularization post.]</p>
+      <div style="font-size: 14px; color: #8a7f72;">[DATE] · 8 min read</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div class="sc">Selected publications</div>
+      <div style="display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 1.4;">
+        <div><a href="#" class="serif" style="color: #2a2622; font-size: 17px;">N-BEATS: Neural basis expansion analysis for interpretable time series forecasting</a><div style="font-size: 14px; color: #8a7f72;">ICLR 2020</div></div>
+        <div><a href="#" class="serif" style="color: #2a2622; font-size: 17px;">StarCoder 2 and The Stack v2</a><div style="font-size: 14px; color: #8a7f72;">BigCode, 2024</div></div>
+        <div><a href="#" class="serif" style="color: #2a2622; font-size: 17px;">LLM2Vec: Large language models are secretly powerful text encoders</a><div style="font-size: 14px; color: #8a7f72;">COLM 2024</div></div>
+      </div>
+      <a href="#" style="font-size: 15px;">All 85 publications →</a>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div class="sc">Speaking</div>
+      <div class="serif" style="font-size: 17px; line-height: 1.4;">[NEXT TALK TITLE]</div>
+      <div style="font-size: 14px; color: #8a7f72;">[VENUE] · [DATE]</div>
+      <div style="font-size: 15px; line-height: 1.5; color: #5a534b; margin-top: 8px;">Recent: AI Agents for Enterprise Workflows, UC Berkeley LLM Agents course (2024); NVIDIA GTC 2025.</div>
+      <a href="#" style="font-size: 15px;">All talks →</a>
+    </div>
+  </div>
+  <hr style="margin: 0 120px;">
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 32px 120px 48px 120px; font-size: 14px; color: #8a7f72;">
+    <div style="display: flex; gap: 20px;"><a href="#">Email</a><a href="#">Google Scholar</a><a href="#">LinkedIn</a><a href="#">Bluesky</a><a href="#">X</a><a href="#">GitHub</a><a href="#">RSS</a></div>
+    <div>© 2026 Nicolas Chapados</div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

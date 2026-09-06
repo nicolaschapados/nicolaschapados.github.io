@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;1,7..72,400&display=swap">
+  <style>
+    body { margin: 0; background: #f2f0eb; }
+    .bt { font-family: 'Literata', Georgia, serif; color: #14120f; }
+    .bt h1, .bt h2, .bt .disp { font-family: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif; }
+    .bt a { color: #14120f; text-decoration: none; }
+    .bt a:hover { color: #ff4d1f; }
+    .bt .acc { color: #ff4d1f; }
+    .bt .tag { font-family: 'Bricolage Grotesque', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  </style>
+</helmet>
+<div class="bt" style="width: 1200px; min-height: 1500px; background: #f2f0eb; display: flex; flex-direction: column; position: relative; overflow: hidden;">
+  <div style="display: flex; justify-content: space-between; align-items: center; padding: 28px 56px;">
+    <div class="disp" style="font-size: 18px; font-weight: 700;">NC</div>
+    <div class="disp" style="display: flex; gap: 28px; font-size: 15px; font-weight: 600;"><a href="#">About</a><a href="#">Publications</a><a href="#">Talks</a><a href="#">Blog</a><span style="background: #14120f; color: #f2f0eb; padding: 4px 10px; border-radius: 999px;">EN</span><a href="#" style="padding: 4px 10px;">FR</a></div>
+  </div>
+  <div style="padding: 48px 56px 0 56px; display: flex; flex-direction: column; gap: 0;">
+    <h1 class="disp" style="margin: 0; font-size: 168px; line-height: 0.88; font-weight: 800; letter-spacing: -0.05em;">Nicolas<br>Chapa<span class="acc">dos</span></h1>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; align-items: end;">
+      <p style="margin: 0; font-size: 24px; line-height: 1.4; font-weight: 400; text-wrap: pretty;">I build machine-learning systems and the companies that ship them: forecasting, decision-making under uncertainty, and lately, agents that do real enterprise work.</p>
+      <div style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; line-height: 1.5; justify-self: end; max-width: 420px;">
+        <div><span class="tag acc">Now</span> Co-Founder &amp; Chief Scientist, Nera Software</div>
+        <div><span class="tag acc">Also</span> Adjunct Prof., Polytechnique Montréal · Mila</div>
+        <div><span class="tag acc">Before</span> VP Research, ServiceNow · Element AI · Imagia</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin: 64px 56px 0 56px; border-top: 3px solid #14120f; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; padding-top: 32px;">
+    <div style="grid-column: span 5; display: flex; flex-direction: column; gap: 12px;">
+      <div class="tag">Latest post</div>
+      <h2 class="disp" style="margin: 0; font-size: 40px; line-height: 1; font-weight: 700; letter-spacing: -0.03em;"><a href="#">[FIRST POST TITLE]</a></h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #4c4741;">[Dek in one sentence.] <span style="color: #8a837a;">[DATE]</span></p>
+    </div>
+    <div style="grid-column: 7 / span 6; display: flex; flex-direction: column; gap: 12px;">
+      <div class="tag">Selected publications</div>
+      <div style="display: flex; flex-direction: column; font-size: 17px; line-height: 1.35;">
+        <a href="#" style="padding: 10px 0; border-bottom: 1px solid #cfcac1; display: flex; justify-content: space-between; gap: 16px;"><span>N-BEATS</span><span class="disp" style="color: #8a837a; font-size: 14px; font-weight: 600;">ICLR 2020</span></a>
+        <a href="#" style="padding: 10px 0; border-bottom: 1px solid #cfcac1; display: flex; justify-content: space-between; gap: 16px;"><span>StarCoder 2 and The Stack v2</span><span class="disp" style="color: #8a837a; font-size: 14px; font-weight: 600;">2024</span></a>
+        <a href="#" style="padding: 10px 0; border-bottom: 1px solid #cfcac1; display: flex; justify-content: space-between; gap: 16px;"><span>LLM2Vec</span><span class="disp" style="color: #8a837a; font-size: 14px; font-weight: 600;">COLM 2024</span></a>
+        <a href="#" style="padding: 10px 0; border-bottom: 1px solid #cfcac1; display: flex; justify-content: space-between; gap: 16px;"><span>WorkArena</span><span class="disp" style="color: #8a837a; font-size: 14px; font-weight: 600;">ICML 2024</span></a>
+      </div>
+      <a href="#" class="disp acc" style="font-size: 15px; font-weight: 700;">All 85 publications →</a>
+    </div>
+  </div>
+  <div style="margin: 48px 56px 0 56px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+    <div style="background: #14120f; color: #f2f0eb; padding: 24px; display: flex; flex-direction: column; gap: 8px; min-height: 140px;"><div class="tag" style="color: #ff4d1f;">Next talk</div><div class="disp" style="font-size: 22px; font-weight: 600; line-height: 1.15;">[NEXT TALK TITLE]</div><div style="font-size: 14px; color: #b8b2a8;">[VENUE] · [DATE]</div></div>
+    <div style="border: 2px solid #14120f; padding: 24px; display: flex; flex-direction: column; gap: 8px;"><div class="tag">CV</div><div class="disp" style="font-size: 22px; font-weight: 600; line-height: 1.15;">Academic CV, September 2026</div><a href="#" class="acc" style="font-size: 14px;">Download PDF</a></div>
+    <div style="border: 2px solid #14120f; padding: 24px; display: flex; flex-direction: column; gap: 8px;"><div class="tag">Elsewhere</div><div style="display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 15px;"><a href="#">Email</a><a href="#">Scholar</a><a href="#">LinkedIn</a><a href="#">Bluesky</a><a href="#">X</a><a href="#">GitHub</a><a href="#">RSS</a></div></div>
+  </div>
+  <div class="disp" style="margin-top: auto; padding: 40px 56px; font-size: 13px; font-weight: 600; color: #8a837a; display: flex; justify-content: space-between;"><span>© 2026 Nicolas Chapados</span><span>chapados.ca</span></div>
+</div>
+</x-dc>
+</body>
+</html>
