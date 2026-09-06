@@ -1,0 +1,74 @@
+[
+  {
+    "id": "oreshkin2019n",
+    "key": "oreshkin2019n",
+    "order": 1,
+    "note": {
+      "en": "Interpretable deep forecasting; the most cited of these works.",
+      "fr": "Prévision profonde interprétable ; le plus cité de ces travaux."
+    }
+  },
+  {
+    "id": "lozhkov2024starcoder2",
+    "key": "lozhkov2024starcoder2",
+    "order": 2,
+    "note": {
+      "en": "Open code models and their training data, with the BigCode community.",
+      "fr": "Modèles de code ouverts et leurs données d’entraînement, avec la communauté BigCode."
+    }
+  },
+  {
+    "id": "behnamghader2024llm2vec",
+    "key": "behnamghader2024llm2vec",
+    "order": 3,
+    "note": {
+      "en": "Turning decoder-only language models into strong text encoders.",
+      "fr": "Transformer des modèles de langue à décodeur en encodeurs de texte performants."
+    }
+  },
+  {
+    "id": "drouin2024workarena",
+    "key": "drouin2024workarena",
+    "order": 4,
+    "note": {
+      "en": "Benchmarking web agents on real knowledge-work tasks.",
+      "fr": "Évaluer des agents web sur de vraies tâches de travail intellectuel."
+    }
+  },
+  {
+    "id": "rasul2023laglama",
+    "key": "rasul2023laglama",
+    "order": 5,
+    "note": {
+      "en": "A foundation model for probabilistic time-series forecasting.",
+      "fr": "Un modèle de fondation pour la prévision probabiliste de séries temporelles."
+    }
+  },
+  {
+    "id": "Havaei2016",
+    "key": "Havaei2016",
+    "order": 6,
+    "note": {
+      "en": "Segmenting medical images when some modalities are missing.",
+      "fr": "Segmenter des images médicales lorsque des modalités manquent."
+    }
+  },
+  {
+    "id": "pmlr-v162-drouin22a",
+    "key": "pmlr-v162-drouin22a",
+    "order": 7,
+    "note": {
+      "en": "Copulas meet transformers for multivariate forecasting.",
+      "fr": "Les copules rencontrent les transformeurs pour la prévision multivariée."
+    }
+  },
+  {
+    "id": "williams2025cik",
+    "key": "williams2025cik",
+    "order": 8,
+    "note": {
+      "en": "Forecasting with the textual context practitioners actually have.",
+      "fr": "Prévoir avec le contexte textuel dont disposent vraiment les praticiens."
+    }
+  }
+]

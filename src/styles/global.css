@@ -1,0 +1,82 @@
+/* Design tokens follow the Monograph canvas (docs/design/directions/Main.dc.html). */
+:root {
+  --bg: #f4f1ea;
+  --fg: #14181c;
+  --sub: #4a453e;
+  --mute: #7a746b;
+  --acc: #8f6b25;
+  --acc-hover: #6f5218;
+  --line: #d8d2c6;
+  --card: #faf8f3;
+  --glow: radial-gradient(closest-side, rgba(143, 107, 37, 0.12), rgba(143, 107, 37, 0));
+  --shadow: 0 14px 34px -14px rgba(20, 24, 28, 0.32), 0 3px 8px -3px rgba(20, 24, 28, 0.16), 0 0 0 1px rgba(20, 24, 28, 0.05);
+  --card-shadow: 0 10px 28px -22px rgba(20, 24, 28, 0.22);
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans: 'IBM Plex Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --mono: 'IBM Plex Mono', Menlo, Consolas, monospace;
+  --radius: 15px;
+  --radius-lg: 18px;
+  --measure: 68ch;
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  --bg: #101418;
+  --fg: #e7e2d8;
+  --sub: #b8b4ab;
+  --mute: #8d9199;
+  --acc: #d3b26a;
+  --acc-hover: #f0d08a;
+  --line: #2a3037;
+  --card: #151a20;
+  --glow: radial-gradient(closest-side, rgba(211, 178, 106, 0.1), rgba(211, 178, 106, 0));
+  --shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.7), 0 3px 8px -3px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  --card-shadow: 0 10px 28px -20px rgba(0, 0, 0, 0.65);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, .serif { font-family: var(--serif); font-weight: 300; letter-spacing: -0.01em; line-height: 1.1; margin: 0; }
+h1 { font-size: clamp(38px, 5vw, 64px); }
+h2 { font-size: clamp(28px, 3.2vw, 40px); }
+h3 { font-size: 22px; line-height: 1.3; }
+p { margin: 0 0 1em 0; color: var(--sub); text-wrap: pretty; }
+a { color: var(--acc); text-decoration: none; transition: color 120ms ease; }
+a:hover { color: var(--acc-hover); }
+em { color: var(--acc); }
+img { max-width: 100%; display: block; }
+code, pre, kbd { font-family: var(--mono); font-size: 0.9em; }
+pre { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; overflow-x: auto; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+.lab { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); font-weight: 500; }
+.wrap { width: min(1200px, 100%); margin: 0 auto; padding: 0 clamp(20px, 6vw, 96px); position: relative; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--card-shadow); padding: 32px; }
+.pill { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; border: 1px solid var(--line); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
+.pill span, .pill a { padding: 3px 10px; border-radius: 999px; }
+.pill .on { background: var(--acc); color: var(--bg); }
+.pill a { color: var(--mute); }
+.btn-line { display: inline-block; padding-bottom: 4px; border-bottom: 1px solid var(--acc); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
+.btn-line.quiet { border-color: var(--line); color: var(--fg); }
+.glow { position: absolute; top: -220px; right: -160px; width: 720px; height: 720px; border-radius: 50%; pointer-events: none; filter: blur(40px); background: var(--glow); z-index: -1; }
+.frame { position: relative; color: var(--acc); }
+.frame::before { content: ''; position: absolute; inset: 0; transform: translate(0, 12px); border-radius: var(--radius); border: 1px solid; opacity: 0.55; pointer-events: none; }
+.portrait { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); filter: grayscale(1) contrast(1.05); }
+.prose { max-width: var(--measure); }
+.prose h2 { margin-top: 2.2em; margin-bottom: 0.6em; }
+.prose h3 { margin-top: 1.8em; margin-bottom: 0.5em; }
+.prose ul, .prose ol { color: var(--sub); padding-left: 1.2em; }
+.prose blockquote { margin: 1.5em 0; padding-left: 1.2em; border-left: 1px solid var(--acc); font-family: var(--serif); font-size: 1.15em; color: var(--fg); }
+.prose img { border-radius: var(--radius); box-shadow: var(--card-shadow); }
+.katex-display { overflow-x: auto; padding: 0.5em 0; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

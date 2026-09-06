@@ -17,7 +17,7 @@
     .mg .lab { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
     .mg .ul { padding-bottom: 4px; }
     .mg .frame { position: relative; }
-    .mg .frame::before { content: ''; position: absolute; inset: 0; transform: translate(14px, 14px); border-radius: 15px; border: 1px solid; opacity: .55; pointer-events: none; }
+    .mg .frame::before { content: ''; position: absolute; inset: 0; transform: translate(0, 12px); border-radius: 15px; border: 1px solid; opacity: .55; pointer-events: none; }
     .mg img.portrait { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; border-radius: 15px; filter: grayscale(1) contrast(1.05); }
     .mg .col { border-radius: 18px; }
     .mg .glow { position: absolute; top: -220px; right: -160px; width: 720px; height: 720px; border-radius: 50%; pointer-events: none; filter: blur(40px); }
@@ -76,8 +76,8 @@ class Component extends DCLogic {
   renderVals() {
     const dark = (this.props.theme ?? 'dark') !== 'light';
     const t = dark
-      ? { bg: '#101418', fg: '#e7e2d8', sub: '#b8b4ab', mute: '#8d9199', acc: '#d3b26a', line: '#2a3037', card: '#151a20', glow: 'radial-gradient(closest-side, rgba(211,178,106,0.10), rgba(211,178,106,0))', shadow: '0 30px 60px -24px rgba(0,0,0,0.75), 0 8px 20px -8px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04)', cardshadow: '0 18px 40px -28px rgba(0,0,0,0.7)' }
-      : { bg: '#f4f1ea', fg: '#14181c', sub: '#4a453e', mute: '#7a746b', acc: '#8f6b25', line: '#d8d2c6', card: '#faf8f3', glow: 'radial-gradient(closest-side, rgba(143,107,37,0.12), rgba(143,107,37,0))', shadow: '0 30px 60px -24px rgba(20,24,28,0.35), 0 8px 20px -8px rgba(20,24,28,0.18), 0 0 0 1px rgba(20,24,28,0.05)', cardshadow: '0 18px 40px -30px rgba(20,24,28,0.25)' };
+      ? { bg: '#101418', fg: '#e7e2d8', sub: '#b8b4ab', mute: '#8d9199', acc: '#d3b26a', line: '#2a3037', card: '#151a20', glow: 'radial-gradient(closest-side, rgba(211,178,106,0.10), rgba(211,178,106,0))', shadow: '0 14px 34px -14px rgba(0,0,0,0.7), 0 3px 8px -3px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.04)', cardshadow: '0 10px 28px -20px rgba(0,0,0,0.65)' }
+      : { bg: '#f4f1ea', fg: '#14181c', sub: '#4a453e', mute: '#7a746b', acc: '#8f6b25', line: '#d8d2c6', card: '#faf8f3', glow: 'radial-gradient(closest-side, rgba(143,107,37,0.12), rgba(143,107,37,0))', shadow: '0 14px 34px -14px rgba(20,24,28,0.32), 0 3px 8px -3px rgba(20,24,28,0.16), 0 0 0 1px rgba(20,24,28,0.05)', cardshadow: '0 10px 28px -22px rgba(20,24,28,0.22)' };
     return { t };
   }
 }

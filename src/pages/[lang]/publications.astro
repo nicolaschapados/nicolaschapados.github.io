@@ -1,0 +1,118 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Publication from '../../components/Publication.astro';
+import { SECTIONS } from '../../content.config';
+import { t, locales, type Locale } from '../../i18n/ui';
+export function getStaticPaths() { return locales.map((lang) => ({ params: { lang } })); }
+const locale = Astro.params.lang as Locale;
+const tr = t(locale);
+const pubs = (await getCollection('publications')).map((e) => e.data);
+const bySection = SECTIONS.map((s) => ({ s, items: pubs.filter((p) => p.section === s).sort((a, b) => b.year - a.year || a.title.localeCompare(b.title)) })).filter((g) => g.items.length);
+const byYear = [...pubs].sort((a, b) => b.year - a.year || a.title.localeCompare(b.title));
+const selected = (await getCollection('selected')).sort((a, b) => a.data.order - b.data.order);
+const selectedPubs = (await Promise.all(selected.map(async (s) => ({ note: s.data.note[locale], p: (await getEntry('publications', s.data.key))?.data })))).filter((x) => x.p);
+const patents = (await getCollection('patents')).sort((a, b) => (b.data.granted ?? 9999) - (a.data.granted ?? 9999));
+const sectionLabel = (s: string) => tr(`section.${s}` as any);
+---
+<Base locale={locale} title={tr('pub.title')} path="publications">
+  <section class="wrap" style="padding-top: 32px;">
+    <h1>{tr('pub.title')}</h1>
+    <p class="intro">{tr('pub.intro')} <span class="count">{pubs.length} {tr('pub.count')}.</span></p>
+    <div class="controls" data-pub-controls>
+      <div class="pill view" role="group" aria-label="View">
+        <button type="button" class="on" data-view="section" aria-pressed="true">{tr('pub.view.section')}</button>
+        <button type="button" data-view="year" aria-pressed="false">{tr('pub.view.year')}</button>
+      </div>
+      <label class="search"><span class="visually-hidden">{tr('pub.search')}</span><input type="search" placeholder={tr('pub.search')} data-search-input autocomplete="off" /></label>
+    </div>
+    <div class="layout">
+      <nav class="toc" aria-label="Sections" data-toc>
+        {selectedPubs.length > 0 && <a href="#selected">{tr('pub.selected')}</a>}
+        {bySection.map((g) => <a href={`#${g.s}`}>{sectionLabel(g.s)} <span>{g.items.length}</span></a>)}
+        <a href="#patents">{tr('section.patent')} <span>{patents.length}</span></a>
+      </nav>
+      <div class="lists">
+        <div data-view-panel="section">
+          {selectedPubs.length > 0 && (
+            <section id="selected" class="group"><h2>{tr('pub.selected')}</h2>
+              <ul>{selectedPubs.map(({ p, note }) => <Publication pub={p!} locale={locale} note={note} />)}</ul>
+            </section>
+          )}
+          {bySection.map((g) => (
+            <section id={g.s} class="group"><h2>{sectionLabel(g.s)}</h2>
+              <ul>{g.items.map((p) => <Publication pub={p} locale={locale} />)}</ul>
+            </section>
+          ))}
+        </div>
+        <div data-view-panel="year" hidden>
+          <div class="chips" role="group" aria-label="Filter">
+            {bySection.map((g) => <button type="button" data-chip={g.s} aria-pressed="true">{sectionLabel(g.s)}</button>)}
+          </div>
+          <ul>{byYear.map((p) => <Publication pub={p} locale={locale} />)}</ul>
+        </div>
+        <section id="patents" class="group"><h2>{tr('section.patent')}</h2>
+          <ul class="patents">
+            {patents.map((pt) => (
+              <li>
+                <div class="head"><span class="serif title">{pt.data.title}</span><span class="year">{pt.data.granted ?? pt.data.filed}</span></div>
+                <div class="meta">{pt.data.inventors.map((a) => a === 'Nicolas Chapados' ? <strong>{a}</strong> : a).reduce((acc: any[], x, i) => i ? [...acc, ', ', x] : [x], [])} · {pt.data.numbers.join(' · ')}</div>
+                <div class="status">{tr('patent.status')}: {pt.data.status[locale]}{pt.data.url && <> · <a href={pt.data.url} rel="external">Google Patents</a></>}</div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+</Base>
+<script>
+  const root = document.querySelector('[data-pub-controls]')?.parentElement;
+  if (root) {
+    const panels = root.querySelectorAll<HTMLElement>('[data-view-panel]');
+    root.querySelectorAll<HTMLButtonElement>('[data-view]').forEach((b) => b.addEventListener('click', () => {
+      root.querySelectorAll<HTMLButtonElement>('[data-view]').forEach((x) => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', String(x === b)); });
+      panels.forEach((p) => (p.hidden = p.dataset.viewPanel !== b.dataset.view));
+      root.querySelector<HTMLElement>('[data-toc]')!.style.visibility = b.dataset.view === 'section' ? 'visible' : 'hidden';
+    }));
+    const input = root.querySelector<HTMLInputElement>('[data-search-input]')!;
+    const chips = root.querySelectorAll<HTMLButtonElement>('[data-chip]');
+    const apply = () => {
+      const q = input.value.trim().toLowerCase();
+      const on = new Set([...chips].filter((c) => c.getAttribute('aria-pressed') === 'true').map((c) => c.dataset.chip));
+      root.querySelectorAll<HTMLElement>('.pub').forEach((li) => {
+        const inYear = li.closest('[data-view-panel="year"]') !== null;
+        const match = (!q || (li.dataset.search ?? '').includes(q)) && (!inYear || on.has(li.dataset.section));
+        li.hidden = !match;
+      });
+      root.querySelectorAll<HTMLElement>('.group').forEach((g) => { if (g.id !== 'patents') g.hidden = !g.querySelector('.pub:not([hidden])'); });
+    };
+    input.addEventListener('input', apply);
+    chips.forEach((c) => c.addEventListener('click', () => { c.setAttribute('aria-pressed', String(c.getAttribute('aria-pressed') !== 'true')); apply(); }));
+    root.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((b) => b.addEventListener('click', async () => {
+      const code = b.parentElement?.querySelector('code')?.textContent ?? '';
+      await navigator.clipboard.writeText(code); const l = b.textContent; b.textContent = b.dataset.copied ?? ''; setTimeout(() => (b.textContent = l), 1500);
+    }));
+  }
+</script>
+<style>
+  .intro { max-width: var(--measure); margin-top: 20px; } .count { color: var(--mute); }
+  .controls { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin: 28px 0 36px; }
+  .view button { font: inherit; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; background: none; border: 0; padding: 4px 12px; border-radius: 999px; color: var(--mute); cursor: pointer; }
+  .view button.on { background: var(--acc); color: var(--bg); }
+  .search input { font: inherit; font-size: 15px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--fg); min-width: 280px; }
+  .layout { display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; }
+  .toc { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+  .toc a { color: var(--sub); } .toc a:hover { color: var(--acc); } .toc span { color: var(--mute); font-variant-numeric: tabular-nums; margin-left: 6px; }
+  .group { margin-bottom: 48px; } .group h2 { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--acc); }
+  .lists ul { list-style: none; margin: 0; padding: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .chips button { font: inherit; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; background: none; color: var(--mute); padding: 5px 12px; cursor: pointer; }
+  .chips button[aria-pressed='true'] { border-color: var(--acc); color: var(--acc); }
+  .patents li { padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .patents .head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+  .patents .title { font-size: 21px; line-height: 1.3; } .patents .year { font-size: 14px; color: var(--mute); }
+  .patents .meta { font-size: 15px; color: var(--sub); margin-top: 4px; } .patents strong { color: var(--fg); font-weight: 500; }
+  .patents .status { font-size: 14px; color: var(--mute); margin-top: 6px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } .toc { position: static; flex-direction: row; flex-wrap: wrap; gap: 8px 18px; } }
+</style>

@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { t, locales, type Locale } from '../../i18n/ui';
+export function getStaticPaths() { return locales.map((lang) => ({ params: { lang } })); }
+const locale = Astro.params.lang as Locale;
+const tr = t(locale);
+const entry = (await getCollection('about')).find((e) => e.data.locale === locale);
+if (!entry) throw new Error(`No about page for locale ${locale}`);
+const { Content } = await render(entry);
+---
+<Base locale={locale} title={tr('about.title')} path="about">
+  <article class="wrap" style="padding-top: 32px;">
+    <h1>{tr('about.title')}</h1>
+    <div class="prose" style="margin-top: 32px;"><Content /></div>
+    <section class="card organizers">
+      <div class="lab">{tr('about.forOrganizers')}</div>
+      <p class="serif third" data-third-person>{entry.data.thirdPerson}</p>
+      <button type="button" data-copy-target="[data-third-person]" data-copied={tr('pub.copied')}>{tr('about.copy')}</button>
+    </section>
+  </article>
+</Base>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy-target]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const el = document.querySelector(btn.dataset.copyTarget!);
+      if (!el) return;
+      await navigator.clipboard.writeText(el.textContent?.trim() ?? '');
+      const label = btn.textContent; btn.textContent = btn.dataset.copied ?? 'Copied';
+      setTimeout(() => (btn.textContent = label), 1500);
+    });
+  });
+</script>
+<style>
+  .organizers { margin-top: 48px; max-width: var(--measure); display: flex; flex-direction: column; gap: 14px; }
+  .third { font-size: 19px; line-height: 1.5; color: var(--fg); margin: 0; }
+  button { align-self: flex-start; font: inherit; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; background: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--acc); cursor: pointer; }
+</style>

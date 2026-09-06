@@ -1,0 +1,11 @@
+{
+  "_comment": "Internal reports (see CONTEXT.md). BibTeX keys dropped by the CV sync. Maintained, not permanent: the REITs memorandum is pending client approval.",
+  "exclude": [
+    "C:DINDM:1998",
+    "C:INLUN:1998",
+    "C:IMAP:1997",
+    "CR:RDRTSR:1997",
+    "C:LRSR:1996",
+    "C:AASRSR:2008"
+  ]
+}

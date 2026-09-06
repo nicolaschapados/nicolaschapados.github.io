@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { t, localePath } from '../i18n/ui';
+const en = t('en'), fr = t('fr');
+---
+<Base locale="en" title={en('notfound.title')} path="404" altPath={null}>
+  <section class="wrap" style="padding-top: 48px; padding-bottom: 96px;">
+    <h1>{en('notfound.title')} <span class="serif" style="color: var(--mute);">· {fr('notfound.title')}</span></h1>
+    <p style="margin-top: 24px;">{en('notfound.body')} <a href={localePath('en')}>{en('nav.home')}</a></p>
+    <p lang="fr">{fr('notfound.body')} <a href={localePath('fr')}>{fr('nav.home')}</a></p>
+  </section>
+</Base>

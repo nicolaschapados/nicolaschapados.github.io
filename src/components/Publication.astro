@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { t, type Locale } from '../i18n/ui';
+import { toBibtex, authorsHtml } from '../lib/bibtex';
+interface Props { pub: CollectionEntry<'publications'>['data']; locale: Locale; note?: string }
+const { pub, locale, note } = Astro.props;
+const tr = t(locale);
+const search = `${pub.title} ${pub.authors.join(' ')} ${pub.venue ?? ''}`.toLowerCase();
+---
+<li class="pub" data-key={pub.key} data-section={pub.section} data-year={pub.year} data-search={search}>
+  <div class="head">
+    <span class="serif title">{pub.title}</span>
+    <span class="year">{pub.year}</span>
+  </div>
+  <div class="meta">
+    <span class="authors" set:html={authorsHtml(pub.authors)} />
+    {pub.venue && <span class="venue"> · {pub.venue}</span>}
+  </div>
+  {note && <p class="note">{note}</p>}
+  <div class="links">
+    {pub.pdf && <a href={pub.pdf} data-pdf>{tr('pub.pdf')}</a>}
+    {pub.doi && <a href={`https://doi.org/${pub.doi}`} rel="external">{tr('pub.doi')}</a>}
+    {pub.arxiv && <a href={`https://arxiv.org/abs/${pub.arxiv}`} rel="external">{tr('pub.arxiv')}</a>}
+    {!pub.arxiv && pub.url && <a href={pub.url} rel="external">{tr('pub.link')}</a>}
+    <details class="bib">
+      <summary>{tr('pub.bibtex')}</summary>
+      <pre><code>{toBibtex(pub)}</code></pre>
+      <button type="button" data-copy data-copied={tr('pub.copied')}>{tr('about.copy')}</button>
+    </details>
+  </div>
+</li>
+<style>
+  .pub { list-style: none; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+  .title { font-size: 21px; line-height: 1.3; color: var(--fg); }
+  .year { font-size: 14px; color: var(--mute); font-variant-numeric: tabular-nums; flex-shrink: 0; }
+  .meta { font-size: 15px; color: var(--sub); margin-top: 4px; }
+  .meta strong { color: var(--fg); font-weight: 500; }
+  .venue { color: var(--mute); }
+  .note { font-family: var(--serif); font-size: 17px; color: var(--fg); margin: 8px 0 0; }
+  .links { display: flex; gap: 18px; align-items: baseline; margin-top: 10px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; flex-wrap: wrap; }
+  .bib { display: inline; } .bib summary { cursor: pointer; color: var(--acc); list-style: none; } .bib summary::-webkit-details-marker { display: none; }
+  .bib[open] { display: block; flex-basis: 100%; }
+  .bib pre { font-size: 12px; text-transform: none; letter-spacing: 0; margin: 10px 0 6px; }
+  .bib button { font: inherit; letter-spacing: 0.08em; text-transform: uppercase; background: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; color: var(--acc); cursor: pointer; }
+</style>

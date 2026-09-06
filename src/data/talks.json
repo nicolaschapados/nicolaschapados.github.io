@@ -1,0 +1,244 @@
+[
+  {
+    "id": "talk-01",
+    "date": "2025-08",
+    "title": "Context is Key: A Benchmark for Forecasting with Essential Textual Information",
+    "event": "IJCAI 2025 Workshop on Artificial Intelligence for Time Series Analysis (AI4TS), Montréal, Canada",
+    "place": null,
+    "kind": "keynote",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-02",
+    "date": "2025-07",
+    "title": "Agentic Full-Stack Benchmarking for Knowledge Work",
+    "event": "ACL 2025 Workshop for Research on Agent Language Models (REALM), Vienna, Austria",
+    "place": null,
+    "kind": "keynote",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-03",
+    "date": "2024-10",
+    "title": "AI Agents for Enterprise Workflows",
+    "event": "UC Berkeley, CS294/194-196 Large Language Model Agents (course and MOOC)",
+    "place": null,
+    "kind": "lecture",
+    "with": [
+      "Alexandre Drouin"
+    ],
+    "recording": "https://www.youtube.com/live/-yf-e-9FvOc"
+  },
+  {
+    "id": "talk-04",
+    "date": "2022-10",
+    "title": "Deep Learning for Time Series Forecasting: N-BEATS and TACTiS",
+    "event": "Bank of Canada, Workshop on Deep Learning for Economic Forecasting",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-05",
+    "date": "2022-02",
+    "title": "Beyond Correlation Machines: Causality Tools for Better Predictions and Decisions at Scale",
+    "event": "Gojek-Tokopedia (Indonedia/Singapore), Data Science Summit",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-06",
+    "date": "2020-12",
+    "title": "AI for Climate Change & Rebuilding after Covid-19",
+    "event": "Dong-A Business Forum (Seoul, Korea)",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-07",
+    "date": "2019-11",
+    "title": "Raising AI Standards of Practice with Explainability",
+    "event": "Monetary Authority of Singapore and Veritas Consortium Expert Series",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-08",
+    "date": "2019-06",
+    "title": "Modeling Behavior at Scale: Techniques from Machine Learning and Causal Inference",
+    "event": "International Society for Consumer Psychology, Annual Conference",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-09",
+    "date": "2018-06",
+    "title": "Realizing the Potential of Autonomous Systems",
+    "event": "Singapore Defence Technology Summit",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-10",
+    "date": "2018-01",
+    "title": "Artificial Intelligence Applications in Securities Markets Enforcement",
+    "event": "Technology Applied to Securities Markets Enforcement (TASMEC), 1st International Conference",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-11",
+    "date": "2017-05",
+    "title": "Neural Networks: from function approximators to trainable Turing machines",
+    "event": "Tutte Institute for Mathematics and Computing, Canadian Security Establishment, Ottawa, Canada",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-12",
+    "date": "2017-03",
+    "title": "Intelligence artificielle: Conséquences pour l’industrie de l’assurance",
+    "event": "Journée de l'assurance de dommages, Montréal, Canada",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-13",
+    "date": "2017-02",
+    "title": "AI in Business",
+    "event": "AQT CEO Vision, Mont-Tremblant, Canada",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-14",
+    "date": "2016-10",
+    "title": "HeMIS: Hetero-Modal Image Segmentation",
+    "event": "CIFAR Workshop on Deep Learning for Medical Imaging, Amsterdam, Netherlands",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-15",
+    "date": "2016-09",
+    "title": "AI in FinTech: What’s New? What’s in the Future?",
+    "event": "Power Corporation and AMF joint meeting on FinTech regulation, Montréal, Canada",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-16",
+    "date": "2016-07",
+    "title": "Artificial Intelligence, Deep Learning, and all that. What’s New? Why the Excitement?",
+    "event": "Next 36 Venture Night, Toronto, Canada",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-17",
+    "date": "2015-10",
+    "title": "Introduction to machine learning for healthcare",
+    "event": "Workshop on healthcare decision systems, Ste-Justine Hospital, Montréal, Canada",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-18",
+    "date": "2015-07",
+    "title": "Effective Bayesian Modeling of Groups of Related Count Time Series",
+    "event": "ICML Demand Forecasting Workshop, Lille, France",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-19",
+    "date": "2014-11",
+    "title": "Effective Bayesian Modeling of Groups of Related Count Time Series",
+    "event": "University of Montréal, Montréal, Canada",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-20",
+    "date": "2014-10",
+    "title": "Le Big Data -- y voir clair",
+    "event": "École Polytechnique de Montréal, Montréal, Canada",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-21",
+    "date": "2014-07",
+    "title": "Effective Bayesian Modeling of Groups of Related Count Time Series",
+    "event": "University of Sherbrooke, Sherbrooke, Canada",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-22",
+    "date": "2014-05",
+    "title": "Bayesian Modeling of Groups of Related Count Time Series",
+    "event": "Google Machine Learning Research Group, Mountain View, CA, USA",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-23",
+    "date": "2014-03",
+    "title": "Deep Learning: What, Why, How?",
+    "event": "OPTSUM 2014, Hyderabad, India",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  },
+  {
+    "id": "talk-24",
+    "date": "2014-03",
+    "title": "Time Series Forecasting with State Space Models",
+    "event": "OPTSUM 2014, Hyderabad, India",
+    "place": null,
+    "kind": "invited",
+    "with": [],
+    "recording": null
+  }
+]

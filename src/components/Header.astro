@@ -1,0 +1,44 @@
+---
+import { t, otherLocale, localePath, type Locale } from '../i18n/ui';
+import ThemeToggle from './ThemeToggle.astro';
+interface Props { locale: Locale; path: string; altPath?: string | null }
+const { locale, path, altPath } = Astro.props;
+const tr = t(locale);
+const other = otherLocale(locale);
+const switchHref = altPath === null ? localePath(other) : localePath(other, altPath ?? path);
+const items = [
+  ['about', tr('nav.about')],
+  ['publications', tr('nav.publications')],
+  ['talks', tr('nav.talks')],
+  ['blog', tr('nav.blog')],
+] as const;
+const current = path.split('/')[0];
+---
+<header class="wrap site-header">
+  <div class="glow" aria-hidden="true"></div>
+  <a class="serif brand" href={localePath(locale)} aria-label={tr('nav.home')}>{tr('site.name')}</a>
+  <nav aria-label="Main">
+    <ul>
+      {items.map(([slug, label]) => (
+        <li><a href={localePath(locale, slug)} aria-current={current === slug ? 'page' : undefined}>{label}</a></li>
+      ))}
+    </ul>
+    <div class="tools">
+      <div class="pill" role="group" aria-label="Language">
+        <span class="on" aria-current="true" lang={locale}>{locale}</span>
+        <a href={switchHref} hreflang={other} lang={other} title={tr('lang.switch')}>{other}</a>
+      </div>
+      <ThemeToggle label={tr('theme.toggle')} />
+    </div>
+  </nav>
+</header>
+<style>
+  .site-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: 28px; padding-bottom: 28px; flex-wrap: wrap; }
+  .brand { font-size: 22px; letter-spacing: 0.02em; color: var(--fg); }
+  nav { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+  ul a { color: var(--fg); padding-bottom: 3px; border-bottom: 1px solid transparent; }
+  ul a:hover, ul a[aria-current='page'] { border-bottom-color: var(--acc); color: var(--fg); }
+  .tools { display: flex; align-items: center; gap: 12px; }
+  @media (max-width: 720px) { ul { gap: 18px; } .site-header { padding-top: 20px; } }
+</style>

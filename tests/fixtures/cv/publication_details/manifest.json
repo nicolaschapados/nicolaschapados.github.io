@@ -1,0 +1,64 @@
+{
+ "generated": "fixture",
+ "records": [
+  {
+   "key": "alpha2024",
+   "section": "refconf",
+   "type": "inproceedings",
+   "year": 2024,
+   "title": "Alpha: A Paper",
+   "authors": [
+    "Ada Lovelace",
+    "Nicolas Chapados"
+   ],
+   "venue": "ICML",
+   "doi": "10.1000/alpha",
+   "url": null,
+   "pdf": "publication_details/alpha2024.pdf",
+   "note": "\\href{https://arxiv.org/abs/2401.00001}{arXiv:2401.00001}"
+  },
+  {
+   "key": "beta2020",
+   "section": "article",
+   "type": "article",
+   "year": 2020,
+   "title": "Beta Journal Paper",
+   "authors": [
+    "Nicolas Chapados"
+   ],
+   "venue": "JMLR",
+   "doi": null,
+   "url": "https://example.org/beta",
+   "pdf": null
+  },
+  {
+   "key": "internal1999",
+   "section": "techrep",
+   "type": "techreport",
+   "year": 1999,
+   "title": "Internal Memo",
+   "authors": [
+    "Nicolas Chapados"
+   ],
+   "venue": "Nortel",
+   "doi": null,
+   "url": null,
+   "pdf": "publication_details/internal1999.pdf"
+  },
+  {
+   "key": "book2010",
+   "section": "book",
+   "type": "book",
+   "year": 2010,
+   "title": "A Book",
+   "authors": [
+    "Nicolas Chapados",
+    "Grace Hopper"
+   ],
+   "venue": "Springer",
+   "doi": null,
+   "url": null,
+   "pdf": "publication_details/book2010.pdf"
+  }
+ ]
+}

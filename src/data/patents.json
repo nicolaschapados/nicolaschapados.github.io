@@ -1,0 +1,147 @@
+[
+  {
+    "id": "p-covariate",
+    "title": "Covariate processing with neural network execution blocks",
+    "inventors": [
+      "Daniel Wong",
+      "Dmitri Carpov",
+      "Nicolas Chapados"
+    ],
+    "numbers": [
+      "US 12,406,173",
+      "CA 3,097,644",
+      "WO 2022/087745"
+    ],
+    "filed": 2020,
+    "granted": 2025,
+    "status": {
+      "en": "Granted (US 2025, Canada 2023). Assignee: ServiceNow.",
+      "fr": "Accordé (États-Unis 2025, Canada 2023). Cessionnaire : ServiceNow."
+    },
+    "url": "https://patents.google.com/patent/US12406173B2"
+  },
+  {
+    "id": "p-slow-moving-2",
+    "title": "Method and system of demand forecasting for inventory management of slow-moving inventory in a supply chain (continuation)",
+    "inventors": [
+      "Nicolas Chapados"
+    ],
+    "numbers": [
+      "US 12,165,090"
+    ],
+    "filed": 2022,
+    "granted": 2024,
+    "status": {
+      "en": "Granted 2024. Assignee: Blue Yonder. A further continuation is pending.",
+      "fr": "Accordé en 2024. Cessionnaire : Blue Yonder. Une autre continuation est en instance."
+    },
+    "url": "https://patents.google.com/patent/US12165090B2"
+  },
+  {
+    "id": "p-slow-moving-1",
+    "title": "Method and system of demand forecasting for inventory management of slow-moving inventory in a supply chain",
+    "inventors": [
+      "Nicolas Chapados"
+    ],
+    "numbers": [
+      "US 11,403,573"
+    ],
+    "filed": 2015,
+    "granted": 2022,
+    "status": {
+      "en": "Granted 2022. Filed by JDA Software.",
+      "fr": "Accordé en 2022. Déposé par JDA Software."
+    },
+    "url": "https://patents.google.com/patent/US11403573B2"
+  },
+  {
+    "id": "p-missing-input",
+    "title": "Method and system for processing a task with robustness to missing input information",
+    "inventors": [
+      "Nicolas Chapados",
+      "Nicolas Guizard",
+      "Mohammad Havaei",
+      "Yoshua Bengio"
+    ],
+    "numbers": [
+      "US 11,144,785",
+      "CA 3,017,697",
+      "WO 2017/158575"
+    ],
+    "filed": 2017,
+    "granted": 2021,
+    "status": {
+      "en": "Granted (US 2021, Canada 2021). Filed by Imagia.",
+      "fr": "Accordé (États-Unis 2021, Canada 2021). Déposé par Imagia."
+    },
+    "url": "https://patents.google.com/patent/US11144785B2"
+  },
+  {
+    "id": "p-anonymized",
+    "title": "Method and system for generating synthetically anonymized data for a given task",
+    "inventors": [
+      "Florent Chandelier",
+      "Andrew Jesson",
+      "Lisa Di Jorio",
+      "Cécile Low-Kam",
+      "Florian Soudan",
+      "Mohammad Havaei",
+      "Nicolas Chapados"
+    ],
+    "numbers": [
+      "CA 3,105,533",
+      "WO 2020/012439"
+    ],
+    "filed": 2019,
+    "granted": 2023,
+    "status": {
+      "en": "Granted in Canada 2023. US and European applications not pursued.",
+      "fr": "Accordé au Canada en 2023. Demandes américaine et européenne abandonnées."
+    },
+    "url": "https://patents.google.com/patent/CA3105533C"
+  },
+  {
+    "id": "p-trading-schedule",
+    "title": "Trading schedule management system",
+    "inventors": [
+      "Pascal Bergeron",
+      "Nicolas Chapados",
+      "Étienne Marcotte",
+      "Marek Sabata",
+      "Ivan Sergienko",
+      "Richard Anthony Valenzano",
+      "Benjamin Crestel"
+    ],
+    "numbers": [
+      "WO 2020/051712",
+      "CA 3,112,484"
+    ],
+    "filed": 2019,
+    "granted": null,
+    "status": {
+      "en": "PCT application published 2020; Canadian application pending. US and European applications not pursued.",
+      "fr": "Demande PCT publiée en 2020 ; demande canadienne en instance. Demandes américaine et européenne abandonnées."
+    },
+    "url": "https://patents.google.com/patent/WO2020051712A1"
+  },
+  {
+    "id": "p-discourse",
+    "title": "Method and apparatus for discourse management",
+    "inventors": [
+      "Nicolas Chapados",
+      "Peter Stubley",
+      "Claudia Pateras",
+      "Réal Tremblay"
+    ],
+    "numbers": [
+      "US 6,356,869"
+    ],
+    "filed": 1999,
+    "granted": 2002,
+    "status": {
+      "en": "Granted 2002, expired 2019. Filed by Nortel Networks. Cited by 217 patent documents.",
+      "fr": "Accordé en 2002, expiré en 2019. Déposé par Nortel Networks. Cité par 217 documents de brevet."
+    },
+    "url": "https://patents.google.com/patent/US6356869B1"
+  }
+]

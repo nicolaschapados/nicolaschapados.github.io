@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { t, localePath, otherLocale, type Locale } from '../../../i18n/ui';
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', (p) => !p.data.draft);
+  return posts.map((post) => ({ params: { lang: post.data.locale, slug: post.id.split('/').pop()! }, props: { post, all: posts } }));
+}
+const { post, all } = Astro.props;
+const locale = post.data.locale as Locale;
+const tr = t(locale);
+const { Content } = await render(post);
+const twin = all.find((p) => p.data.translationKey === post.data.translationKey && p.data.locale === otherLocale(locale));
+const slug = post.id.split('/').pop()!;
+const altPath = twin ? `blog/${twin.id.split('/').pop()}` : null;
+const date = post.data.date.toLocaleDateString(locale === 'fr' ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+const url = new URL(localePath(locale, `blog/${slug}`), Astro.site ?? 'https://chapados.ca').href;
+const share = encodeURIComponent(`${post.data.title} ${url}`);
+---
+<Base locale={locale} title={post.data.title} description={post.data.summary} path={`blog/${slug}`} altPath={altPath}>
+  <article class="wrap post" style="padding-top: 32px;">
+    <header>
+      <div class="lab"><time datetime={post.data.date.toISOString()}>{date}</time>{post.data.tags.length > 0 && <span> · {post.data.tags.join(' · ')}</span>}</div>
+      <h1>{post.data.title}</h1>
+      <p class="summary serif">{post.data.summary}</p>
+    </header>
+    <div class="prose"><Content /></div>
+    <footer class="discuss">
+      <span class="lab">{tr('blog.discuss')}</span>
+      <a href={`https://bsky.app/intent/compose?text=${share}`} rel="external">Bluesky</a>
+      <a href={`https://x.com/intent/post?text=${share}`} rel="external">X</a>
+      <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} rel="external">LinkedIn</a>
+    </footer>
+  </article>
+</Base>
+<style>
+  .post header { max-width: var(--measure); display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+  .summary { font-size: 22px; line-height: 1.4; color: var(--sub); margin: 0; }
+  .discuss { display: flex; gap: 20px; align-items: baseline; margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+</style>

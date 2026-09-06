@@ -1,0 +1,37 @@
+---
+import { t, localePath, social, emailParts, type Locale } from '../i18n/ui';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const tr = t(locale);
+const year = new Date().getFullYear();
+---
+<footer class="wrap site-footer">
+  <hr />
+  <div class="row">
+    <ul>
+      <li><a href="#" data-email data-u={emailParts.user} data-d={emailParts.domain}>{tr('footer.email')}</a></li>
+      <li><a href={social.scholar} rel="me">Google Scholar</a></li>
+      <li><a href={social.linkedin} rel="me">LinkedIn</a></li>
+      <li><a href={social.bluesky} rel="me">Bluesky</a></li>
+      <li><a href={social.x} rel="me">X</a></li>
+      <li><a href={social.github} rel="me">GitHub</a></li>
+      <li><a href={social.openreview} rel="me">OpenReview</a></li>
+      <li><a href={localePath(locale, 'rss.xml').replace(/\/$/, '')}>RSS</a></li>
+    </ul>
+    <div class="colophon">{tr('footer.place')} · chapados.ca · © {year} {tr('footer.rights')}</div>
+  </div>
+</footer>
+<script>
+  // Assemble the address on the client so it is never a plain mailto in the HTML.
+  document.querySelectorAll<HTMLAnchorElement>('a[data-email]').forEach((a) => {
+    const addr = `${a.dataset.u}@${a.dataset.d}`;
+    a.href = `mailto:${addr}`;
+    a.title = addr;
+  });
+</script>
+<style>
+  .site-footer { margin-top: 64px; padding-bottom: 48px; }
+  .row { display: flex; justify-content: space-between; gap: 24px; padding-top: 28px; font-size: 13px; color: var(--mute); flex-wrap: wrap; }
+  ul { display: flex; flex-wrap: wrap; gap: 10px 22px; list-style: none; margin: 0; padding: 0; }
+  ul a { color: var(--mute); } ul a:hover { color: var(--acc); }
+</style>

@@ -1,0 +1,32 @@
+---
+// Root: a client-side redirect on stored choice then browser language (ADR 0003).
+// The site is static, so Astro.preferredLocale is unavailable; no-script and crawlers fall back to /en/.
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nicolas Chapados</title>
+    <meta name="robots" content="noindex" />
+    <link rel="alternate" hreflang="en-CA" href="https://chapados.ca/en/" />
+    <link rel="alternate" hreflang="fr-CA" href="https://chapados.ca/fr/" />
+    <link rel="alternate" hreflang="x-default" href="https://chapados.ca/en/" />
+    <script is:inline>
+      (function () {
+        var target = '/en/';
+        try {
+          var stored = localStorage.getItem('locale');
+          if (stored === 'fr' || stored === 'en') target = '/' + stored + '/';
+          else if (/^fr\b/i.test(navigator.language || '')) target = '/fr/';
+        } catch (e) {}
+        location.replace(target);
+      })();
+    </script>
+    <noscript><meta http-equiv="refresh" content="0; url=/en/" /></noscript>
+    <style>body{margin:0;background:#101418;color:#e7e2d8;font-family:Georgia,serif;display:grid;place-items:center;min-height:100vh}a{color:#d3b26a}</style>
+  </head>
+  <body>
+    <p><a href="/en/">English</a> · <a href="/fr/">Français</a></p>
+  </body>
+</html>
