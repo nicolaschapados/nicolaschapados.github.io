@@ -11,21 +11,21 @@ One bibliographic entry from the CV, identified by its BibTeX key. There are 91.
 _Avoid_: paper (too narrow: books, theses and reports are publications too), reference
 
 **Section**:
-The CV's grouping of publications, in this fixed display order: books, journal articles, refereed conference papers, workshop papers, theses, technical reports. A publication belongs to exactly one section, set by the CV, not by its BibTeX type. On the site, a seventh section, patents, closes the Publications page.
+The CV's grouping of publications, in this fixed display order: books and book chapters, refereed journal articles, refereed conference proceedings, workshop presentations, theses, working papers and technical reports. A publication belongs to exactly one section, set by the CV, not by its BibTeX type. On the site, a seventh section, patents, closes the Publications page.
 _Avoid_: category, type (type is the BibTeX entry type, which can disagree with the section)
 
 **Patent**:
 One patent family from the CV with its legal status. Patents are listed on the Publications page but are not publications and are not in the manifest; they are hand-maintained site data.
 
 **Archived PDF**:
-The copy of a publication stored in the CV repo's archive and served by this site. 13 publications have none and link to a DOI or URL instead.
+The copy of a publication stored in the CV repo's archive and served by this site. 13 publications have none; those with a DOI or URL link there, the rest are listed without a link.
 _Avoid_: attachment, local PDF
 
 **Manifest**:
 The JSON index of all publications generated in the `cv` repo, the sole data source for the publications page.
 
 **Internal report**:
-A publication written for an employer or client and never made public (the five Nortel memoranda, the REITs memorandum). Internal reports stay in the CV but are dropped from the site by an exclusion list of BibTeX keys kept in this repo.
+A publication written for an employer or client and not public (today: the five Nortel memoranda and the REITs memorandum, the latter pending client approval). Internal reports stay in the CV and are dropped from the site by BibTeX key; the list is maintained, not permanent.
 _Avoid_: confidential, private
 
 **Selected publication**:

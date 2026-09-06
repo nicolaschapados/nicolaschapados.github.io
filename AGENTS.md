@@ -8,7 +8,7 @@ Issues live in GitHub Issues for `nicolaschapados/bio`, operated via the `gh` CL
 
 ### Triage labels
 
-The five canonical triage labels are used unchanged: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+The five canonical triage labels exist in the repo under their canonical names: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
 
 ### Domain docs
 
