@@ -70,7 +70,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
 .glow { position: absolute; top: -220px; right: -160px; width: 720px; height: 720px; border-radius: 50%; pointer-events: none; filter: blur(40px); background: var(--glow); z-index: -1; }
 .frame { position: relative; color: var(--acc); }
 .frame::before { content: ''; position: absolute; inset: 0; transform: translate(0, 12px); border-radius: var(--radius); border: 1px solid; opacity: 0.55; pointer-events: none; }
-.portrait { position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); filter: grayscale(1) contrast(1.05); }
+.portrait { position: relative; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); filter: grayscale(1) contrast(1.05); }
 .prose { max-width: var(--measure); }
 .prose h2 { margin-top: 2.2em; margin-bottom: 0.6em; }
 .prose h3 { margin-top: 1.8em; margin-bottom: 0.5em; }

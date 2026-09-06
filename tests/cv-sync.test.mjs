@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { sync, toSiteRecords, newestCvPdf } from '../scripts/cv-sync.mjs';
+import { sync, toSiteRecords, newestCvPdf, normalizeAuthor } from '../scripts/cv-sync.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const fixtureCv = path.join(here, 'fixtures', 'cv');
@@ -55,6 +55,9 @@ describe('CV sync', () => {
     expect(newestCvPdf(fixtureCv)).toMatch(/20260905/);
     const recs = toSiteRecords([{ key: 'x', section: 'thesis', type: 'phdthesis', year: '2009', title: 'T', authors: 'A and B', venue: '', pdf: null }], []);
     expect(recs[0].authors).toEqual(['A', 'B']);
+    expect(normalizeAuthor('Chapados, Nicolas')).toBe('Nicolas Chapados');
+    expect(normalizeAuthor('Boris N. Oreshkin')).toBe('Boris N. Oreshkin');
+    expect(toSiteRecords([{ key: 'y', section: 'refconf', type: 'inproceedings', year: 2020, title: 'T', authors: ['Oreshkin, Boris N.', 'Chapados, Nicolas'], pdf: null }], [])[0].authors).toEqual(['Boris N. Oreshkin', 'Nicolas Chapados']);
     expect(recs[0].year).toBe(2009);
     expect(fs.readFileSync(path.join(here, '..', 'scripts', 'cv-sync.mjs'), 'utf8')).not.toMatch(/\.tex/);
   });

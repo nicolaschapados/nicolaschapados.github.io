@@ -6,7 +6,7 @@ export function getStaticPaths() { return locales.map((lang) => ({ params: { lan
 const locale = Astro.params.lang as Locale;
 const tr = t(locale);
 const talks = (await getCollection('talks')).sort((a, b) => b.data.date.localeCompare(a.data.date));
-const fmt = (d: string) => new Date(`${d}-15`).toLocaleDateString(locale === 'fr' ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long' });
+const fmt = (d: string) => new Date(`${d}-15`).toLocaleDateString(locale === 'fr' ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', timeZone: 'UTC' });
 const kindLabel: Record<string, Record<Locale, string>> = { keynote: { en: 'Keynote', fr: 'Conférence plénière' }, lecture: { en: 'Guest lecture', fr: 'Cours magistral' }, invited: { en: 'Invited talk', fr: 'Présentation invitée' }, panel: { en: 'Panel', fr: 'Table ronde' } };
 ---
 <Base locale={locale} title={tr('talks.title')} path="talks">

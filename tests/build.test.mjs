@@ -61,7 +61,10 @@ describe('built site', () => {
       const order = ['id="book"', 'id="article"', 'id="refconf"', 'id="workshop"', 'id="thesis"', 'id="techrep"', 'id="patents"'].map((s) => html.indexOf(s));
       expect(order.every((i) => i > 0)).toBe(true);
       expect([...order].sort((a, b) => a - b)).toEqual(order);
-      expect(html).toContain('<strong>Nicolas Chapados</strong>');
+      // The owner is an author on every publication, so every entry carries the bold name.
+      const entries = inSectionView.split('<li class="pub"').slice(1);
+      expect(entries.length).toBe(publications.length + selectedCount);
+      for (const e of entries) expect(e, e.slice(0, 120)).toContain('<strong>Nicolas Chapados</strong>');
       expect(html).not.toMatch(/data-key="[^"]*"[^]*?<strong>Nicolas<\/strong>/);
     });
   }

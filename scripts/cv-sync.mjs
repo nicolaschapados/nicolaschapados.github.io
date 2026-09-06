@@ -29,6 +29,12 @@ export function arxivId(record) {
   return m ? m[1] : null;
 }
 
+/** "Last, First" → "First Last"; anything else unchanged. */
+export function normalizeAuthor(a) {
+  const parts = String(a).split(',').map((x) => x.trim()).filter(Boolean);
+  return parts.length === 2 ? `${parts[1]} ${parts[0]}` : String(a).trim();
+}
+
 /** Turn manifest records into the site's publications.json records. Pure. */
 export function toSiteRecords(records, exclude) {
   const dropped = new Set(exclude);
@@ -41,7 +47,7 @@ export function toSiteRecords(records, exclude) {
       type: r.type,
       year: Number(r.year),
       title: r.title,
-      authors: Array.isArray(r.authors) ? r.authors : String(r.authors ?? '').split(/\s+and\s+|;\s*/).filter(Boolean),
+      authors: (Array.isArray(r.authors) ? r.authors : String(r.authors ?? '').split(/\s+and\s+|;\s*/)).map(normalizeAuthor).filter(Boolean),
       venue: r.venue || null,
       doi: r.doi || null,
       url: r.url || r.source_url || null,

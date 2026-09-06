@@ -15,7 +15,7 @@ const selectedPubs = (await Promise.all(selected.map(async (s) => ({ s, p: await
 const posts = (await getCollection('posts', (p) => !p.data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const latest = posts.find((p) => p.data.locale === locale) ?? posts[0];
 const talks = (await getCollection('talks')).sort((a, b) => b.data.date.localeCompare(a.data.date)).slice(0, 3);
-const fmtMonth = (d: string) => new Date(`${d}-15`).toLocaleDateString(locale === 'fr' ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long' });
+const fmtMonth = (d: string) => new Date(`${d}-15`).toLocaleDateString(locale === 'fr' ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', timeZone: 'UTC' });
 ---
 <Base locale={locale} title={tr('site.name')} path="">
   <section class="wrap hero">

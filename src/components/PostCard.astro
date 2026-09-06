@@ -7,7 +7,7 @@ const tr = t(locale);
 const slug = post.id.split('/').pop()!;
 const foreign = post.data.locale !== locale;
 const href = localePath(post.data.locale, `blog/${slug}`);
-const date = post.data.date.toLocaleDateString(locale === 'fr' ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+const date = post.data.date.toLocaleDateString(locale === 'fr' ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 ---
 <article class="post-card">
   <a class="serif title" href={href} lang={foreign ? post.data.locale : undefined}>{post.data.title}</a>
