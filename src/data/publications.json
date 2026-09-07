@@ -139,9 +139,8 @@
     "authors": [
       "Thibault Le Sellier de Chezelles",
       "Maxime Gasse",
-      "Alexandre Lacoste",
-      "Massimo Caccia",
       "Alexandre Drouin",
+      "Massimo Caccia",
       "Léo Boisvert",
       "Megh Thakkar",
       "Tom Marty",
@@ -153,10 +152,11 @@
       "Dehan Kong",
       "Frank F. Xu",
       "Siva Reddy",
-      "Graham Neubig",
       "Quentin Cappart",
-      "Russ Salakhutdinov",
-      "Nicolas Chapados"
+      "Graham Neubig",
+      "Ruslan Salakhutdinov",
+      "Nicolas Chapados",
+      "Alexandre Lacoste"
     ],
     "venue": "Transactions on Machine Learning Research",
     "doi": null,
@@ -182,7 +182,7 @@
     "doi": "10.1287/ijoo.2023.0092",
     "url": "https://doi.org/10.1287/ijoo.2023.0092",
     "arxiv": null,
-    "pdf": null
+    "pdf": "/papers/Kafaei_2024.pdf"
   },
   {
     "id": "Kafaei_2021",
@@ -202,7 +202,7 @@
     "doi": "10.1088/1361-6560/ac2bb5",
     "url": "https://dx.doi.org/10.1088/1361-6560/ac2bb5",
     "arxiv": null,
-    "pdf": null
+    "pdf": "/papers/Kafaei_2021.pdf"
   },
   {
     "id": "Byrnegutjnl-2017-314547",

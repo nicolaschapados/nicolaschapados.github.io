@@ -19,7 +19,7 @@ Publications, archived PDFs and the CV PDF come from the private `cv` repository
 npm run cv-sync -- --cv ../cv     # or set CV_REPO
 ```
 
-The sync reads `publication_details/manifest.json`, drops the keys listed in `scripts/publications.exclude.json` (internal reports), copies new or changed PDFs to `public/papers/`, copies the newest `cv_acad_nc_YYYYMMDD.pdf` to `public/cv.pdf`, and writes `src/data/publications.json`. It never reads the LaTeX source. It fails if the manifest or a referenced PDF is missing.
+The sync reads `publication_details/manifest.json`, drops the keys listed in `scripts/publications.exclude.json` (internal reports), copies new or changed PDFs to `public/papers/`, copies the newest public-approved CV, `cv_acad_nc_YYYYMMDD_public.pdf`, to `public/cv.pdf` (the unsuffixed CV carries private contact details and is never copied), and writes `src/data/publications.json`. It never reads the LaTeX source. It fails if the manifest or a referenced PDF is missing.
 
 Hand-maintained data: `src/data/talks.json`, `src/data/patents.json`, `src/data/selected.json` (the selected publications and their one-line notes). Site copy in both languages: `src/i18n/ui.ts`; About pages: `src/content/about/`; posts: `src/content/posts/<locale>/*.mdx`.
 

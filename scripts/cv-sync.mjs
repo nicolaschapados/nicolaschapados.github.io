@@ -57,10 +57,16 @@ export function toSiteRecords(records, exclude) {
     .sort((a, b) => SECTION_ORDER.indexOf(a.section) - SECTION_ORDER.indexOf(b.section) || b.year - a.year || a.title.localeCompare(b.title));
 }
 
-/** Newest cv_acad_nc_YYYYMMDD.pdf in a directory, or null. */
+/**
+ * Newest public-approved CV: cv_acad_nc_YYYYMMDD_public.pdf (the `_public` suffix marks the release cleared
+ * for publication; the unsuffixed file carries private contact details and is never copied).
+ * Dated files win by date; an undated cv_acad_nc_public.pdf is used only when no dated one exists.
+ */
 export function newestCvPdf(dir) {
-  const names = fs.readdirSync(dir).filter((n) => /^cv_acad_nc_\d{8}\.pdf$/.test(n)).sort();
-  return names.length ? path.join(dir, names[names.length - 1]) : null;
+  const names = fs.readdirSync(dir);
+  const dated = names.filter((n) => /^cv_acad_nc_\d{8}_public\.pdf$/.test(n)).sort();
+  if (dated.length) return path.join(dir, dated[dated.length - 1]);
+  return names.includes('cv_acad_nc_public.pdf') ? path.join(dir, 'cv_acad_nc_public.pdf') : null;
 }
 
 function sameFile(a, b) {
@@ -93,7 +99,7 @@ export function sync({ cv, siteRoot, dryRun = false, log = console.log }) {
   if (summary.missing.length) throw new Error(`Referenced PDFs missing in cv repo: ${summary.missing.join(', ')}`);
 
   const cvPdf = newestCvPdf(cv);
-  if (!cvPdf) throw new Error(`No cv_acad_nc_YYYYMMDD.pdf found in ${cv}`);
+  if (!cvPdf) throw new Error(`No public-approved CV (cv_acad_nc_YYYYMMDD_public.pdf) found in ${cv}`);
   const cvDst = path.join(siteRoot, 'public', 'cv.pdf');
   summary.cvPdf = path.basename(cvPdf);
   if (!dryRun && !sameFile(cvPdf, cvDst)) fs.copyFileSync(cvPdf, cvDst);

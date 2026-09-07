@@ -80,7 +80,7 @@
     <div class="arrow">→</div>
     <div class="node"><div class="t">manifest.json</div><div class="d">91 records: key, section, title, authors, venue, year, doi, url, pdf</div></div>
     <div class="arrow">→</div>
-    <div class="node" style="border-color: var(--acc);"><div class="t">npm run cv-sync</div><div class="d"><code>scripts/cv-sync.mjs</code> · drops 6 keys · copies changed PDFs · picks newest CV PDF · normalizes "Last, First"</div></div>
+    <div class="node" style="border-color: var(--acc);"><div class="t">npm run cv-sync</div><div class="d"><code>scripts/cv-sync.mjs</code> · drops 6 keys · copies changed PDFs · picks newest <code>_public</code> CV PDF · normalizes "Last, First"</div></div>
     <div class="arrow">→</div>
     <div class="node"><div class="t">Astro content collection</div><div class="d"><code>src/data/publications.json</code>, 85 typed records · section view + year view</div></div>
   </div>
@@ -128,7 +128,7 @@ portrait: 15 px radius · shadow 0 14px 34px, centred, cast downward · brass ha
   <table>
     <tr><th>Seam</th><th>What is asserted</th><th>Where</th></tr>
     <tr><td>Built output</td><td>English and French twins for every page · root redirect and no-script fallback · <code>lang</code> and hreflang per locale · 85 entries once per view, section order, excluded keys absent, every entry bolds Nicolas Chapados · every <code>/papers/…pdf</code> link resolves to a file · RSS per locale with one item per post · sitemap lists locale pages, not 404 · no plain mailto, no phone-number pattern</td><td><code>tests/build.test.mjs</code>, runs on <code>dist/</code></td></tr>
-    <tr><td>CV sync</td><td>Against a fixture cv repo: exclusion, section order, PDF and arXiv mapping, copy-only-changed, newest CV PDF, loud failure on missing manifest or PDF, author normalization, never reads <code>.tex</code></td><td><code>tests/cv-sync.test.mjs</code>, <code>tests/fixtures/cv/</code></td></tr>
+    <tr><td>CV sync</td><td>Against a fixture cv repo: exclusion, section order, PDF and arXiv mapping, copy-only-changed, newest <code>_public</code> CV PDF and never the private one, loud failure on missing manifest or PDF, author normalization, never reads <code>.tex</code></td><td><code>tests/cv-sync.test.mjs</code>, <code>tests/fixtures/cv/</code></td></tr>
   </table>
   <p><code>npm test</code> builds then runs both. The GitHub Actions workflow runs <code>astro check</code>, then the same, then deploys on <code>main</code>.</p>
 

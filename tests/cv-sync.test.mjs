@@ -36,8 +36,8 @@ describe('CV sync', () => {
     const first = sync({ cv: fixtureCv, siteRoot, log: () => {} });
     expect(first.copied.sort()).toEqual(['alpha2024', 'book2010']);
     expect(fs.existsSync(path.join(siteRoot, 'public/papers/internal1999.pdf'))).toBe(false);
-    expect(first.cvPdf).toBe('cv_acad_nc_20260905.pdf');
-    expect(fs.readFileSync(path.join(siteRoot, 'public/cv.pdf'), 'utf8')).toContain('new cv');
+    expect(first.cvPdf).toBe('cv_acad_nc_20260905_public.pdf');
+    expect(fs.readFileSync(path.join(siteRoot, 'public/cv.pdf'), 'utf8')).toContain('public cv');
     const second = sync({ cv: fixtureCv, siteRoot, log: () => {} });
     expect(second.copied).toEqual([]);
     expect(second.skipped.sort()).toEqual(['alpha2024', 'book2010']);
@@ -51,8 +51,22 @@ describe('CV sync', () => {
     expect(() => sync({ cv: broken, siteRoot, log: () => {} })).toThrow(/missing/i);
   });
 
+  it('only ever copies a _public CV, preferring the newest dated one', () => {
+    expect(newestCvPdf(fixtureCv)).toMatch(/cv_acad_nc_20260905_public\.pdf$/);
+    const d = fs.mkdtempSync(path.join(os.tmpdir(), 'cv-'));
+    fs.writeFileSync(path.join(d, 'cv_acad_nc_20261231.pdf'), 'private, newer, must be ignored');
+    expect(newestCvPdf(d)).toBeNull();
+    fs.writeFileSync(path.join(d, 'cv_acad_nc_public.pdf'), 'undated public');
+    expect(newestCvPdf(d)).toMatch(/cv_acad_nc_public\.pdf$/);
+    fs.writeFileSync(path.join(d, 'cv_acad_nc_20240101_public.pdf'), 'dated public');
+    expect(newestCvPdf(d)).toMatch(/20240101_public/);
+    const noPublic = fs.mkdtempSync(path.join(os.tmpdir(), 'cv-'));
+    fs.cpSync(fixtureCv, noPublic, { recursive: true });
+    for (const f of fs.readdirSync(noPublic)) if (f.endsWith('_public.pdf')) fs.unlinkSync(path.join(noPublic, f));
+    expect(() => sync({ cv: noPublic, siteRoot, log: () => {} })).toThrow(/public-approved/);
+  });
+
   it('never touches the tex source and exposes pure helpers', () => {
-    expect(newestCvPdf(fixtureCv)).toMatch(/20260905/);
     const recs = toSiteRecords([{ key: 'x', section: 'thesis', type: 'phdthesis', year: '2009', title: 'T', authors: 'A and B', venue: '', pdf: null }], []);
     expect(recs[0].authors).toEqual(['A', 'B']);
     expect(normalizeAuthor('Chapados, Nicolas')).toBe('Nicolas Chapados');
