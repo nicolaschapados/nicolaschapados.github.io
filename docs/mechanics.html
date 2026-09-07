@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>chapados.ca: how the pieces fit</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root { --bg:#101418; --fg:#e7e2d8; --sub:#b8b4ab; --mute:#8d9199; --acc:#d3b26a; --line:#2a3037; --card:#151a20; --ok:#7fb59a; --todo:#c9a25e; --mono:'IBM Plex Mono',Menlo,monospace; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif; line-height:1.55; }
+  main { max-width: 1040px; margin: 0 auto; padding: 48px 32px 96px; }
+  h1,h2,h3 { font-family:'Newsreader',Georgia,serif; font-weight:300; letter-spacing:-0.01em; margin:0; }
+  h1 { font-size: 52px; line-height:1.05; } h1 em { color:var(--acc); font-style: italic; }
+  h2 { font-size: 30px; margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line); }
+  h3 { font-size: 22px; margin-top: 32px; }
+  .lab { font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--mute); }
+  p { color:var(--sub); max-width: 70ch; }
+  a { color: var(--acc); text-decoration: none; } a:hover { color:#f0d08a; }
+  code, pre { font-family: var(--mono); font-size: 13px; }
+  code { color: var(--fg); background: var(--card); padding: 1px 6px; border-radius: 3px; }
+  pre { background: var(--card); border:1px solid var(--line); border-radius: 12px; padding: 18px 20px; overflow-x:auto; color: var(--fg); line-height:1.6; margin: 16px 0; }
+  pre .c { color: var(--mute); } pre .a { color: var(--acc); }
+  .flow { display:flex; flex-wrap:wrap; align-items:stretch; gap: 12px; margin: 20px 0; }
+  .node { background: var(--card); border:1px solid var(--line); border-radius: 12px; padding: 14px 16px; min-width: 150px; flex: 1 1 150px; }
+  .node .t { font-weight:600; font-size: 15px; } .node .d { color: var(--mute); font-size: 13px; margin-top: 4px; }
+  .node.plan { border-style: dashed; }
+  .arrow { display:flex; align-items:center; color: var(--mute); font-size: 20px; padding: 0 2px; }
+  table { border-collapse: collapse; width: 100%; margin: 20px 0; font-size: 15px; }
+  th { text-align:left; font-weight:500; color: var(--mute); font-size: 12px; letter-spacing:.14em; text-transform: uppercase; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--line); }
+  td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--sub); }
+  td:first-child { color: var(--fg); }
+  .pill { font-family: var(--mono); font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+  .done { color: var(--ok); border-color: var(--ok); } .todo { color: var(--todo); border-color: var(--todo); } .open { color: var(--mute); border-color: var(--mute); }
+  .grid2 { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .dom { display:grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 12px; align-items:center; margin: 20px 0; }
+  .dom .node { min-width: 0; }
+  @media (max-width: 720px) { h1 { font-size: 38px; } .dom { grid-template-columns: 1fr; } .arrow { transform: rotate(90deg); justify-content:center; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="lab">Sessions of 6 September 2026 · branch <code>nicolaschapados/initial-website</code> · <a href="https://github.com/nicolaschapados/bio/pull/1">PR #1</a></div>
+  <h1 style="margin-top:16px;">chapados.ca: <em>how the pieces fit</em></h1>
+  <p style="font-size:18px; margin-top:20px;">The site builds and passes its tests, but nothing is live: the repo is private, Pages is off and DNS still points at parking pages. This page explains where each piece lives, how data flows from the CV to the site, and what remains manual.</p>
+
+  <h2>1 · Where every decision lives</h2>
+  <p>Three kinds of record, each with one job. The glossary defines words. ADRs explain choices that are hard to reverse. The spec turns the rest into user stories. The agent docs tell the engineering skills where issues and labels live.</p>
+<pre>bio/
+├── AGENTS.md                         <span class="c">index read by every agent session</span>
+├── CONTEXT.md                        <span class="c">glossary: Publication, Section, Archived PDF, Manifest, Internal report,</span>
+│                                     <span class="c">Selected publication, CV sync, Canonical domain, Locale, Post, Patent</span>
+├── docs/adr/0001…0003                <span class="c">canonical domain · Astro on Pages · bilingual /en/ /fr/</span>
+├── docs/agents/                      <span class="c">GitHub Issues via gh · five triage labels · single-context domain docs</span>
+├── docs/design/directions/           <span class="c">design canvas sources: Main (dark), MainLight, Phone + six sketches</span>
+├── docs/mechanics.html               <span class="c">this page</span>
+└── README.md                         <span class="c">develop · sync · go-live steps</span>
+<span class="c">Spec with user stories, implementation and testing decisions:</span> <a href="https://github.com/nicolaschapados/bio/issues/2">issue #2</a></pre>
+
+  <table>
+    <tr><th>Decision</th><th>Choice</th><th>Record</th></tr>
+    <tr><td>Canonical domain</td><td>chapados.ca. chapadosresearch.org and portfolioparadigms.com redirect to it.</td><td><span class="pill done">ADR 0001</span></td></tr>
+    <tr><td>Stack</td><td>Astro 7, static, deployed by GitHub Actions to GitHub Pages. PDFs committed in the repo.</td><td><span class="pill done">ADR 0002</span></td></tr>
+    <tr><td>Languages</td><td>Fully bilingual, symmetric <code>/en/</code> and <code>/fr/</code>; root redirects client-side. A post may exist in one language only.</td><td><span class="pill done">ADR 0003</span></td></tr>
+    <tr><td>Pages</td><td>Landing, About, Publications, Talks, Blog. Patents close the Publications page.</td><td><span class="pill done">spec #2</span></td></tr>
+    <tr><td>Publications view</td><td>By CV section by default, toggle to one list by year, search box, BibTeX per entry.</td><td><span class="pill done">spec #2</span></td></tr>
+    <tr><td>Exclusions</td><td>Six internal reports dropped by BibTeX key: five Nortel memoranda, the REITs memorandum.</td><td><span class="pill done">spec #2</span></td></tr>
+    <tr><td>About</td><td>First person, plus a copyable third-person block. C3 described per its site.</td><td><span class="pill done">spec #2</span></td></tr>
+    <tr><td>Contact, comments, analytics</td><td>Obfuscated email plus social links. No comments. No analytics.</td><td><span class="pill done">spec #2</span></td></tr>
+    <tr><td>Portfolio Paradigms posts</td><td>Undecided. WordPress stays up; only the two Gandi domains redirect at launch.</td><td><span class="pill todo">open</span></td></tr>
+    <tr><td>Figure vignettes per publication</td><td>Proposed after seeing Siva Reddy's page; prototype extracts Figure 1 from a PDF. Not decided.</td><td><span class="pill todo">open</span></td></tr>
+  </table>
+
+  <h2>2 · From the CV to the site: the data pipeline</h2>
+  <p>The CV repository stays the single source of truth for publications. Its generator emits a machine-readable manifest; the site's sync consumes only that manifest and the PDFs, never the LaTeX, so the phone number and address in the tex can never leak.</p>
+  <div class="flow">
+    <div class="node"><div class="t">cv repo (private)</div><div class="d"><code>nc_publications.bib</code> · <code>cv_acad_nc.tex</code> · 78 PDFs in <code>publication_details/</code></div></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="t">gen_publication_index.py</div><div class="d">in the cv repo · reads bib + tex <code>\nocite</code> lists + files</div></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="t">manifest.json</div><div class="d">91 records: key, section, title, authors, venue, year, doi, url, pdf</div></div>
+    <div class="arrow">→</div>
+    <div class="node" style="border-color: var(--acc);"><div class="t">npm run cv-sync</div><div class="d"><code>scripts/cv-sync.mjs</code> · drops 6 keys · copies changed PDFs · picks newest CV PDF · normalizes "Last, First"</div></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="t">Astro content collection</div><div class="d"><code>src/data/publications.json</code>, 85 typed records · section view + year view</div></div>
+  </div>
+<pre><span class="c"># in the cv repo, after editing the bib/tex and adding PDFs</span>
+python3 gen_publication_index.py
+<span class="c"># in the site repo</span>
+npm run cv-sync -- --cv ../cv          <span class="c"># or CV_REPO=…; refuses to run if the manifest or a PDF is missing</span>
+npm test                               <span class="c"># build + 13 tests</span>
+<span class="c"># commit, push to main → Actions builds, tests, deploys</span></pre>
+  <p>Hand-maintained data the sync does not touch: <code>src/data/talks.json</code> (24 invited talks), <code>src/data/patents.json</code> (7 entries), <code>src/data/selected.json</code> (8 selected publications with notes in both languages), and <code>scripts/publications.exclude.json</code>.</p>
+
+  <h2>3 · The site</h2>
+<pre>src/
+├── content.config.ts     <span class="c">collections: publications, selected, talks, patents, posts, about (zod schemas)</span>
+├── i18n/ui.ts            <span class="c">every string of chrome in en and fr, keyed · locale helpers · social links · email parts</span>
+├── layouts/Base.astro    <span class="c">head: canonical, hreflang alternates, OG, theme script before paint · header · footer</span>
+├── components/           <span class="c">Header, ThemeToggle, Footer (email assembled client-side), Publication, PostCard</span>
+├── lib/bibtex.ts         <span class="c">BibTeX generated from manifest fields · bold owner in author lists</span>
+├── pages/index.astro     <span class="c">root: stored choice → navigator.language → /en/; &lt;noscript&gt; refresh to /en/</span>
+├── pages/404.astro
+├── pages/[lang]/         <span class="c">index · about · publications · talks · blog/index · blog/[slug] · rss.xml</span>
+├── content/about/        <span class="c">en.mdx, fr.mdx with a thirdPerson frontmatter field</span>
+├── content/posts/{en,fr} <span class="c">MDX posts; translationKey links the two languages; draft: true hides</span>
+├── assets/portrait.jpg   <span class="c">1000 px B&amp;W master, served through astro:assets</span>
+└── styles/global.css     <span class="c">tokens from the Monograph canvas; [data-theme] switches palettes</span>
+public/                   <span class="c">papers/*.pdf (78) · cv.pdf · CNAME · favicon.svg · og-default.jpg</span></pre>
+  <div class="grid2">
+    <div>
+      <h3>Two themes, one design</h3>
+      <p>A script in the head reads <code>localStorage.theme</code>, else the system preference, and stamps <code>data-theme</code> on the root before first paint. The toggle flips it and remembers. Tokens:</p>
+<pre>dark:  bg #101418  fg #e7e2d8  accent #d3b26a  line #2a3037
+light: bg #f4f1ea  fg #14181c  accent #8f6b25  line #d8d2c6
+type:  Newsreader (display) · IBM Plex Sans (text) · Plex Mono (code)
+portrait: 15 px radius · shadow 0 14px 34px, centred, cast downward · brass hairline frame offset 12 px down</pre>
+    </div>
+    <div>
+      <h3>Bilingual routing</h3>
+      <p>Every page under <code>[lang]/</code> is generated twice by <code>getStaticPaths</code>. The language pill links to the twin page; for a post without a translation it links to the other locale's blog index. Blog lists show one entry per <code>translationKey</code>, preferring the reader's language and marking the other.</p>
+      <h3>Markdown</h3>
+      <p>Astro 7 defaults to the Sätteri processor; the config uses the unified one so <code>remark-math</code> + <code>rehype-katex</code> render math at build time, with Shiki for code in both themes.</p>
+    </div>
+  </div>
+
+  <h2>4 · Tests: two seams</h2>
+  <table>
+    <tr><th>Seam</th><th>What is asserted</th><th>Where</th></tr>
+    <tr><td>Built output</td><td>English and French twins for every page · root redirect and no-script fallback · <code>lang</code> and hreflang per locale · 85 entries once per view, section order, excluded keys absent, every entry bolds Nicolas Chapados · every <code>/papers/…pdf</code> link resolves to a file · RSS per locale with one item per post · sitemap lists locale pages, not 404 · no plain mailto, no phone-number pattern</td><td><code>tests/build.test.mjs</code>, runs on <code>dist/</code></td></tr>
+    <tr><td>CV sync</td><td>Against a fixture cv repo: exclusion, section order, PDF and arXiv mapping, copy-only-changed, newest CV PDF, loud failure on missing manifest or PDF, author normalization, never reads <code>.tex</code></td><td><code>tests/cv-sync.test.mjs</code>, <code>tests/fixtures/cv/</code></td></tr>
+  </table>
+  <p><code>npm test</code> builds then runs both. The GitHub Actions workflow runs <code>astro check</code>, then the same, then deploys on <code>main</code>.</p>
+
+  <h2>5 · Domains and hosting</h2>
+  <p>GitHub Pages serves one custom domain per site, so the other domains cannot be aliases; their registrars forward them.</p>
+  <div class="dom">
+    <div>
+      <div class="node"><div class="t">chapadosresearch.org</div><div class="d">Gandi · parked today · <span class="pill todo">forward 301</span></div></div>
+      <div class="node" style="margin-top:12px;"><div class="t">portfolioparadigms.com</div><div class="d">Wild West Domains · live WordPress.com blog · <span class="pill open">later</span></div></div>
+      <div class="node" style="margin-top:12px;"><div class="t">www.chapados.ca</div><div class="d">CNAME → nicolaschapados.github.io · <span class="pill todo">DNS</span></div></div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="node" style="border-color: var(--acc);"><div class="t">chapados.ca</div><div class="d">Gandi · 4 A records → GitHub Pages IPs · HTTPS by GitHub · <code>public/CNAME</code> already set · <span class="pill todo">DNS</span></div></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="t">GitHub Pages</div><div class="d">repo <code>nicolaschapados/bio</code> · must become public · source: GitHub Actions · <span class="pill todo">enable</span></div></div>
+  </div>
+  <p>Order when going live: make the repo public, enable Pages with Actions as source, merge the PR, set the custom domain in repo settings, change DNS at Gandi, then forward the other domains. Full steps in the README.</p>
+
+  <h2>6 · Status</h2>
+  <table>
+    <tr><th>Step</th><th>Result</th><th>Status</th></tr>
+    <tr><td>Decisions, glossary, ADRs, agent setup</td><td>committed</td><td><span class="pill done">done</span></td></tr>
+    <tr><td>Design: six directions, Monograph chosen, dark + light + phone</td><td><a href="https://claude.ai/code/artifact/3791601f-143f-448c-81d0-2982e80fa459">canvas</a></td><td><span class="pill done">done</span></td></tr>
+    <tr><td>Adversarial fact-check of docs and design copy</td><td>two reviewers, about 66 claims, 17 corrections</td><td><span class="pill done">done</span></td></tr>
+    <tr><td>Spec</td><td><a href="https://github.com/nicolaschapados/bio/issues/2">issue #2</a>, ready-for-agent</td><td><span class="pill done">done</span></td></tr>
+    <tr><td>Astro scaffold, all pages, both languages, CV sync, tests, workflow</td><td><a href="https://github.com/nicolaschapados/bio/pull/1">PR #1</a> · 13 tests pass</td><td><span class="pill done">done</span></td></tr>
+    <tr><td>Owner review of wording (About, hero, notes) and merge</td><td></td><td><span class="pill todo">next</span></td></tr>
+    <tr><td>Repo public · Pages · DNS · forwards</td><td>manual, README</td><td><span class="pill todo">next</span></td></tr>
+    <tr><td>Stale profiles: Mila and Google Scholar still say ServiceNow</td><td></td><td><span class="pill open">owner</span></td></tr>
+    <tr><td>Figure vignettes per publication</td><td>prototype only</td><td><span class="pill open">decide</span></td></tr>
+  </table>
+</main>
+</body>
+</html>
