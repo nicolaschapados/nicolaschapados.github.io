@@ -1,7 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { Image } from 'astro:assets';
 import { t, locales, type Locale } from '../../i18n/ui';
+import portrait from '../../assets/portrait.jpg';
 export function getStaticPaths() { return locales.map((lang) => ({ params: { lang } })); }
 const locale = Astro.params.lang as Locale;
 const tr = t(locale);
@@ -15,8 +17,19 @@ const { Content } = await render(entry);
     <div class="prose" style="margin-top: 32px;"><Content /></div>
     <section class="card organizers">
       <div class="lab">{tr('about.forOrganizers')}</div>
-      <p class="serif third" data-third-person>{entry.data.thirdPerson}</p>
-      <button type="button" data-copy-target="[data-third-person]" data-copied={tr('pub.copied')}>{tr('about.copy')}</button>
+      <div class="org-grid">
+        <div class="org-text">
+          <p class="serif third" data-third-person>{entry.data.thirdPerson}</p>
+          <button type="button" data-copy-target="[data-third-person]" data-copied={tr('pub.copied')}>{tr('about.copy')}</button>
+        </div>
+        <div class="org-photo">
+          <Image class="headshot" src={portrait} alt={tr('about.headshotAlt')} width={400} loading="lazy" />
+          <div class="org-actions">
+            <button type="button" data-copy-image="/images/headshot-nicolas-chapados.jpg" data-copied={tr('pub.copied')}>{tr('about.copyImage')}</button>
+            <a class="dl" href="/images/headshot-nicolas-chapados.jpg" download="nicolas-chapados-headshot.jpg">{tr('about.download')}</a>
+          </div>
+        </div>
+      </div>
     </section>
   </article>
 </Base>
@@ -30,9 +43,31 @@ const { Content } = await render(entry);
       setTimeout(() => (btn.textContent = label), 1500);
     });
   });
+  // Copy the headshot as a PNG bitmap (the clipboard accepts image/png, not JPEG).
+  document.querySelectorAll<HTMLButtonElement>('[data-copy-image]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const label = btn.textContent;
+      try {
+        const bmp = await createImageBitmap(await (await fetch(btn.dataset.copyImage!)).blob());
+        const canvas = document.createElement('canvas'); canvas.width = bmp.width; canvas.height = bmp.height;
+        canvas.getContext('2d')!.drawImage(bmp, 0, 0);
+        const png: Blob = await new Promise((r) => canvas.toBlob((b) => r(b!), 'image/png'));
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': png })]);
+        btn.textContent = btn.dataset.copied ?? 'Copied';
+      } catch { btn.textContent = '✕'; }
+      setTimeout(() => (btn.textContent = label), 1500);
+    });
+  });
 </script>
 <style>
-  .organizers { margin-top: 48px; max-width: var(--measure); display: flex; flex-direction: column; gap: 14px; }
+  .organizers { margin-top: 48px; max-width: 900px; display: flex; flex-direction: column; gap: 14px; }
+  .org-grid { display: grid; grid-template-columns: 1fr 200px; gap: 28px; align-items: start; }
+  .org-text { display: flex; flex-direction: column; gap: 14px; }
+  .org-photo { display: flex; flex-direction: column; gap: 10px; }
+  .headshot { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); filter: grayscale(1) contrast(1.05); }
+  .org-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  .dl { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; }
+  @media (max-width: 720px) { .org-grid { grid-template-columns: 1fr; } .org-photo { max-width: 220px; } }
   .third { font-size: 19px; line-height: 1.5; color: var(--fg); margin: 0; }
   button { align-self: flex-start; font: inherit; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; background: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--acc); cursor: pointer; }
 </style>

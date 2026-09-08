@@ -41,7 +41,7 @@ const sectionLabel = (s: string) => tr(`section.${s}` as any);
           )}
           {bySection.map((g) => (
             <section id={g.s} class="group"><h2>{sectionLabel(g.s)}</h2>
-              <ul>{g.items.map((p) => <Publication pub={p} locale={locale} />)}</ul>
+              <ul>{g.items.map((p) => <Publication pub={p} locale={locale} anchor />)}</ul>
             </section>
           ))}
         </div>

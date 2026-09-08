@@ -1,5 +1,5 @@
 ---
-import { t, localePath, social, emailParts, type Locale } from '../i18n/ui';
+import { t, localePath, social, emailParts, blogEnabled, type Locale } from '../i18n/ui';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const tr = t(locale);
@@ -16,7 +16,7 @@ const year = new Date().getFullYear();
       <li><a href={social.x} rel="me">X</a></li>
       <li><a href={social.github} rel="me">GitHub</a></li>
       <li><a href={social.openreview} rel="me">OpenReview</a></li>
-      <li><a href={localePath(locale, 'rss.xml').replace(/\/$/, '')}>RSS</a></li>
+      {blogEnabled && <li><a href={localePath(locale, 'rss.xml').replace(/\/$/, '')}>RSS</a></li>}
     </ul>
     <div class="colophon">{tr('footer.place')} · chapados.ca · © {year} {tr('footer.rights')}</div>
   </div>

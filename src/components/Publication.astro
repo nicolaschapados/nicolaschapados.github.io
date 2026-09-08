@@ -2,12 +2,12 @@
 import type { CollectionEntry } from 'astro:content';
 import { t, type Locale } from '../i18n/ui';
 import { toBibtex, authorsHtml } from '../lib/bibtex';
-interface Props { pub: CollectionEntry<'publications'>['data']; locale: Locale; note?: string }
-const { pub, locale, note } = Astro.props;
+interface Props { pub: CollectionEntry<'publications'>['data']; locale: Locale; note?: string; anchor?: boolean }
+const { pub, locale, note, anchor = false } = Astro.props;
 const tr = t(locale);
 const search = `${pub.title} ${pub.authors.join(' ')} ${pub.venue ?? ''}`.toLowerCase();
 ---
-<li class="pub" data-key={pub.key} data-section={pub.section} data-year={pub.year} data-search={search}>
+<li class="pub" id={anchor ? pub.key : undefined} data-key={pub.key} data-section={pub.section} data-year={pub.year} data-search={search}>
   <div class="head">
     <span class="serif title">{pub.title}</span>
     <span class="year">{pub.year}</span>

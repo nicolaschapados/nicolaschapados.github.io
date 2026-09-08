@@ -1,0 +1,37 @@
+---
+interface Props {
+  src?: string;
+  videoId?: string;
+  title: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+  source: string;
+  credit: string;
+}
+const { src, videoId, title, alt, width, height, source, credit } = Astro.props;
+const locale = Astro.url.pathname.startsWith('/fr/') ? 'fr' : 'en';
+---
+<figure class="about-figure">
+  {videoId ? (
+    <iframe class="video" src={`https://www.youtube-nocookie.com/embed/${videoId}`} title={title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" />
+  ) : (
+    <a class="figure-image" href={src} target="_blank" rel="noopener" aria-label={`${title} — ${locale === 'fr' ? 'agrandir l’image (nouvel onglet)' : 'enlarge image (new tab)'}`}>
+      <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" />
+    </a>
+  )}
+  <figcaption>
+    <div class="caption"><slot /></div>
+    <a class="source" href={source}>{credit}</a>
+  </figcaption>
+</figure>
+<style>
+  .about-figure { margin: 2rem 0 2.5rem; }
+  .video { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: var(--radius); background: #101418; }
+  .figure-image { display: block; padding: clamp(8px, 2vw, 16px); background: white; border-radius: var(--radius); border: 1px solid var(--line); }
+  .figure-image img { width: 100%; height: auto; border-radius: 0; box-shadow: none; }
+  .figure-image:focus-visible { outline: 2px solid var(--acc); outline-offset: 4px; }
+  figcaption { margin-top: 0.9rem; font-size: 0.875rem; line-height: 1.55; color: var(--sub); }
+  .caption :global(p) { margin: 0; }
+  .source { display: inline-block; margin-top: 0.4rem; font-size: 0.75rem; }
+</style>

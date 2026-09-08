@@ -1,9 +1,9 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
-import { locales, localePath, t, type Locale } from '../../i18n/ui';
+import { blogEnabled, locales, localePath, t, type Locale } from '../../i18n/ui';
 
-export function getStaticPaths() { return locales.map((lang) => ({ params: { lang } })); }
+export function getStaticPaths() { return blogEnabled ? locales.map((lang) => ({ params: { lang } })) : []; }
 
 export async function GET(context: APIContext) {
   const locale = context.params.lang as Locale;

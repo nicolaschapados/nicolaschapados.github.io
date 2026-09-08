@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import PostCard from '../../../components/PostCard.astro';
-import { t, locales, localePath, type Locale } from '../../../i18n/ui';
-export function getStaticPaths() { return locales.map((lang) => ({ params: { lang } })); }
+import { blogEnabled, t, locales, localePath, type Locale } from '../../../i18n/ui';
+export function getStaticPaths() { return blogEnabled ? locales.map((lang) => ({ params: { lang } })) : []; }
 const locale = Astro.params.lang as Locale;
 const tr = t(locale);
 const all = (await getCollection('posts', (p) => !p.data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());

@@ -1,0 +1,4 @@
+{
+  "blogEnabled": false,
+  "_comment": "Set blogEnabled to true once the first real post exists: shows Blog in the nav, the landing card, RSS links, and builds /blog/ routes."
+}

@@ -10,6 +10,7 @@ const read = (p) => fs.readFileSync(path.join(dist, p), 'utf8');
 const exists = (p) => fs.existsSync(path.join(dist, p));
 const publications = JSON.parse(fs.readFileSync(path.join(root, 'src/data/publications.json'), 'utf8'));
 const exclude = JSON.parse(fs.readFileSync(path.join(root, 'scripts/publications.exclude.json'), 'utf8')).exclude;
+const { blogEnabled } = JSON.parse(fs.readFileSync(path.join(root, 'site.config.json'), 'utf8'));
 
 function walk(dir, out = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -39,6 +40,17 @@ describe('built site', () => {
     expect(html).toMatch(/navigator\.language/);
     expect(html).toMatch(/<noscript><meta http-equiv="refresh" content="0; url=\/en\/"/);
     expect(html).toContain('hreflang="fr-CA"');
+  });
+
+  it('about page links every named paper to an anchor that exists on the publications page', () => {
+    const pubs = read('en/publications/index.html');
+    for (const locale of ['en', 'fr']) {
+      const about = read(`${locale}/about/index.html`);
+      const anchors = [...about.matchAll(new RegExp(`href="/${locale}/publications/#([^"]+)"`, 'g'))].map((m) => m[1]);
+      expect(anchors.length).toBeGreaterThanOrEqual(4);
+      for (const a of anchors) expect(pubs, a).toContain(`id="${a}"`);
+      expect(about).toContain('href="/images/headshot-nicolas-chapados.jpg"');
+    }
   });
 
   it('sets lang and alternate links per locale', () => {
@@ -78,11 +90,17 @@ describe('built site', () => {
     for (const p of publications.filter((p) => !p.pdf)) expect(html).not.toContain(`/papers/${p.key}.pdf`);
   });
 
-  it('publishes an RSS feed per locale with one item per post in that locale', () => {
+  it('publishes an RSS feed per locale with one item per post in that locale, or no blog at all when disabled', () => {
+    if (!blogEnabled) {
+      expect(exists('en/blog/index.html')).toBe(false);
+      expect(exists('en/rss.xml')).toBe(false);
+      expect(read('en/index.html')).not.toContain('/en/blog/');
+      return;
+    }
     for (const locale of ['en', 'fr']) {
       const xml = read(`${locale}/rss.xml`);
       expect(xml).toMatch(/^<\?xml/);
-      const posts = fs.readdirSync(path.join(root, 'src/content/posts', locale)).filter((f) => f.endsWith('.mdx')).length;
+      const posts = fs.readdirSync(path.join(root, 'src/content/posts', locale)).filter((f) => f.endsWith('.mdx') && !fs.readFileSync(path.join(root, 'src/content/posts', locale, f), 'utf8').includes('draft: true')).length;
       expect((xml.match(/<item>/g) ?? []).length).toBe(posts);
       expect(xml).toContain(`https://chapados.ca/${locale}/blog/`);
     }

@@ -1,5 +1,5 @@
 ---
-import { t, otherLocale, localePath, type Locale } from '../i18n/ui';
+import { t, otherLocale, localePath, blogEnabled, type Locale } from '../i18n/ui';
 import ThemeToggle from './ThemeToggle.astro';
 interface Props { locale: Locale; path: string; altPath?: string | null }
 const { locale, path, altPath } = Astro.props;
@@ -10,7 +10,7 @@ const items = [
   ['about', tr('nav.about')],
   ['publications', tr('nav.publications')],
   ['talks', tr('nav.talks')],
-  ['blog', tr('nav.blog')],
+  ...(blogEnabled ? ([['blog', tr('nav.blog')]] as const) : []),
 ] as const;
 const current = path.split('/')[0];
 ---

@@ -1,18 +1,42 @@
 ---
 locale: en
-thirdPerson: "Nicolas Chapados is Co-Founder and Chief Scientist of Nera Software, a Montréal software startup currently in stealth mode, Adjunct Professor of Applied Mathematics at Polytechnique Montréal and Associate Industry Member of Mila. He was Vice-President of Research at ServiceNow from 2021 to 2025, and co-founded Element AI (acquired by ServiceNow in 2021), the medical-imaging company Imagia, the machine-learning firm ApSTAT and the quantitative investment manager Chapados Couture Capital. He holds a B.Eng. in Computer Engineering from McGill University, an M.Sc. and a Ph.D. in Computer Science from Université de Montréal under Yoshua Bengio, and the CFA designation. His research spans time-series forecasting, decision-making under uncertainty, healthcare AI and AI agents for enterprise work."
+thirdPerson: "Nicolas Chapados is Co-Founder and Chief Scientist of Nera Software, a Montréal software startup building a system of record for verified intent, Adjunct Professor of Applied Mathematics at Polytechnique Montréal and Associate Industry Member of Mila. He was Vice-President of Research at ServiceNow from 2021 to 2025, and co-founded Element AI (acquired by ServiceNow in 2021), the medical-imaging company Imagia, the machine-learning firm ApSTAT and the quantitative investment manager Chapados Couture Capital. He holds a B.Eng. in Computer Engineering from McGill University, an M.Sc. and a Ph.D. in Computer Science from Université de Montréal under Yoshua Bengio, and the CFA designation. His research spans time-series forecasting, decision-making under uncertainty, healthcare AI and AI agents for enterprise work."
 ---
 
-I am a machine-learning researcher who keeps building companies around the research. Today I am Co-Founder and Chief Scientist of [Nera Software](https://www.nera.software), a Montréal startup currently in stealth mode. I also teach and supervise as Adjunct Professor of Applied Mathematics at Polytechnique Montréal, and I am an Associate Industry Member of [Mila](https://mila.quebec/en/directory/nicolas-chapados), the Québec AI institute.
+import AboutFigure from '../../components/AboutFigure.astro';
 
-## Before
+I’m Nicolas Chapados, a machine-learning researcher and entrepreneur based in Montréal.
 
-From 2021 to 2025 I was Vice-President of Research at ServiceNow, leading the research organization that came out of the acquisition of Element AI, which I had co-founded in 2016 and where I was Chief Science Officer. Our group worked on large language models, code models, time-series foundation models and, increasingly, agents that carry out enterprise work; several of those results are on the [publications page](/en/publications/).
+One of my first jobs, as a teenager, was programming the PC version of [*Wrath of the Demon*](https://en.wikipedia.org/wiki/Wrath_of_the_Demon). Everything was written by hand in 80x86 assembly. I spent a lot of time trying to move bytes through video memory fast enough to keep the game running smoothly. We shipped on floppy disks and CDs, and fixing bugs sometimes required patching code in memory after the disks had already been copied.
 
-Before that I co-founded Imagia, applying deep learning to medical imaging, and in 2001, while still writing my thesis, [ApSTAT Technologies](https://apstat.com/author/nicolas-chapados/) with Yoshua Bengio, to transfer machine-learning research into insurance, supply-chain planning, forecasting and finance. In 2012 I co-founded [Chapados Couture Capital](https://www.chapados-couture.com) with Éric-Paul Couture; it operated as a quantitative portfolio manager from 2013 to 2025 and is now a private holding company. Earlier, at Nortel Networks, I worked on speech recognition and natural-language understanding.
+<AboutFigure videoId="wXB3Gweb86I" title="Wrath of the Demon — PC gameplay" source="https://www.youtube.com/watch?v=wXB3Gweb86I" credit="Watch on YouTube">
+Wrath of the Demon. I programmed the PC version in the early 1990s—a small time capsule of floppy disks, assembly code and wonderfully ambitious game-making.
+</AboutFigure>
 
-## Research
+Since then, my work has taken me through speech recognition, quantitative finance, medical imaging and enterprise AI. I’ve remained interested in how research becomes something people can use, which has often meant building a company as well as writing software.
 
-I care about learning systems that make good decisions: time-series forecasting, from N-BEATS and TACTiS to foundation models such as Lag-Llama; decision-making under uncertainty in finance and operations; AI for healthcare; and, most recently, benchmarks and methods for AI agents on knowledge work. I studied computer engineering at McGill (B.Eng., 1995) and computer science at Université de Montréal (M.Sc. 2000, Ph.D. 2009) under Yoshua Bengio, and I hold the CFA designation.
+## What I’m working on
 
-Beyond papers, I supervise graduate students at Polytechnique Montréal and Mila, review for the main machine-learning venues, and speak regularly to industry, regulators and the public about what AI can and cannot yet do. The full record is in my [academic CV](/cv.pdf).
+Much of my research concerns learning and decision-making under uncertainty. How can we make useful forecasts when observations are incomplete, circumstances change and the past is an imperfect guide? How should those forecasts inform what we do next? These questions connect my work on time series, including [N-BEATS](/en/publications/#oreshkin2019n) and [TACTiS](/en/publications/#pmlr-v162-drouin22a), with my experience in investment management and business forecasting.
+
+<AboutFigure src="/images/about/context-is-key-figure-1.png" width={1220} height={480} title="Context is Key" alt="Two forecasts of solar power production: numerical history alone misses the nighttime drop, while textual context helps the forecast return to zero." source="/papers/williams2025cik.pdf#page=2" credit="Williams et al. · Context is Key · ICML 2025 · Figure 1 (cropped)">
+A curve doesn’t tell the whole story ([Context is Key](/en/publications/#williams2025cik)). Knowing that it represents solar power production changes what we can predict for the night.
+</AboutFigure>
+
+More recently, I’ve been working on AI agents: how to train them to carry out increasingly complex tasks, evaluate their abilities, and make their behaviour more reliable. I’m interested in both improving what they can do and understanding when we have good reasons to trust them. That means examining how they learn, the tools and feedback they receive, and whether our evaluations capture the work we actually need them to perform.
+
+<AboutFigure src="/images/about/malice-figure-2.png" width={865} height={335} title="Malice in Agentland" alt="The same request to find headphones leads to a product search in a clean training example, but to confidential data exfiltration in a poisoned example containing a trigger." source="/papers/boisvert2026malice.pdf#page=3" credit="Boisvert et al. · Malice in Agentland · Figure 2 (cropped)">
+The same request, two behaviours. In [Malice in Agentland](/en/publications/#boisvert2026malice), we study how poisoned training data can teach an agent to disclose information when a trigger appears.
+</AboutFigure>
+
+I pursue part of this work as co-founder and Chief Scientist of [Nera Software](https://www.nera.software). We’re building the system of record for verified intent, helping teams express their decisions and requirements in forms that can guide coding agents and be used to check their work.
+
+## How I got here
+
+I studied computer engineering at [McGill](https://www.mcgill.ca/), then completed my master’s and doctorate in computer science at [Université de Montréal](https://www.umontreal.ca/) under [Yoshua Bengio](https://yoshuabengio.org/en). I worked on speech recognition and natural-language understanding at [Nortel](https://en.wikipedia.org/wiki/Nortel), and co-founded [ApSTAT](https://apstat.com/), [Chapados Couture Capital](https://www.chapados-couture.com/) and [Imagia](https://web.archive.org/web/20220814085123/https://imagia.com/), applying machine learning to forecasting, investment management and medical imaging.
+
+In 2016, I co-founded [Element AI](https://en.wikipedia.org/wiki/Element_AI), where I was Chief Science Officer. Following its acquisition, I led AI research at [ServiceNow](https://www.servicenow.com/) from 2021 to 2025.
+
+I’m also an Adjunct Professor of Applied Mathematics at [Polytechnique Montréal](https://www.polymtl.ca/expertises/en/chapados-nicolas) and an Associate Industry Member of [Mila](https://mila.quebec/en/directory/nicolas-chapados). Research, graduate supervision and building things remain closely connected parts of my work. Sometimes an application exposes a question we don’t know how to answer yet. Those are often the questions I want to spend more time on.
+
+You can explore my [publications](/en/publications/) or find the full record in my [academic CV](/cv.pdf).

@@ -1,3 +1,5 @@
+import siteConfig from '../../site.config.json';
+export const blogEnabled: boolean = siteConfig.blogEnabled;
 export const locales = ['en', 'fr'] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = 'en';
@@ -60,8 +62,11 @@ export const ui = {
     'blog.rss': 'RSS feed',
     'blog.minutes': 'min read',
     'about.title': 'About',
-    'about.forOrganizers': 'Short biography for organizers',
+    'about.forOrganizers': 'Short biography and headshot for organizers',
     'about.copy': 'Copy',
+    'about.copyImage': 'Copy image',
+    'about.download': 'Download',
+    'about.headshotAlt': 'Headshot of Nicolas Chapados, black and white',
     'footer.email': 'Email',
     'footer.rights': 'Nicolas Chapados',
     'footer.place': 'Montréal',
@@ -125,8 +130,11 @@ export const ui = {
     'blog.rss': 'Fil RSS',
     'blog.minutes': 'min de lecture',
     'about.title': 'À propos',
-    'about.forOrganizers': 'Courte biographie pour les organisateurs',
+    'about.forOrganizers': 'Courte biographie et photo pour les organisateurs',
     'about.copy': 'Copier',
+    'about.copyImage': 'Copier l’image',
+    'about.download': 'Télécharger',
+    'about.headshotAlt': 'Portrait de Nicolas Chapados, en noir et blanc',
     'footer.email': 'Courriel',
     'footer.rights': 'Nicolas Chapados',
     'footer.place': 'Montréal',
