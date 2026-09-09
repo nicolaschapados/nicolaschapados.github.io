@@ -35,7 +35,8 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
+body { overflow-x: clip; } /* the decorative .glow bleeds past the right edge; never let it widen the page */
 body {
   margin: 0;
   background: var(--bg);
