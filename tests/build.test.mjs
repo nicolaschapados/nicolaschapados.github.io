@@ -66,6 +66,20 @@ describe('built site', () => {
     }
   });
 
+  it('every page has Open Graph tags whose image exists, and the icons are served', () => {
+    for (const p of ['index.html', 'en/index.html', 'fr/about/index.html', 'en/publications/index.html', 'fr/talks/index.html']) {
+      const html = read(p);
+      expect(html, p).toContain('property="og:title"');
+      const m = html.match(/property="og:image" content="https:\/\/chapados\.ca(\/[^"]+)"/);
+      expect(m, p).not.toBeNull();
+      expect(exists(m[1].slice(1)), `${p} -> ${m[1]}`).toBe(true);
+    }
+    expect(read('fr/about/index.html')).toContain('/og/about-fr.jpg');
+    expect(exists('apple-touch-icon.png')).toBe(true);
+    expect(exists('robots.txt')).toBe(true);
+    expect(read('robots.txt')).toContain('Sitemap: https://chapados.ca/sitemap-index.xml');
+  });
+
   it('sets lang and alternate links per locale', () => {
     expect(read('en/index.html')).toMatch(/<html lang="en-CA"/);
     expect(read('fr/index.html')).toMatch(/<html lang="fr-CA"/);

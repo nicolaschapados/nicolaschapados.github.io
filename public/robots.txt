@@ -1,0 +1,5 @@
+# chapados.ca
+User-agent: *
+Allow: /
+
+Sitemap: https://chapados.ca/sitemap-index.xml

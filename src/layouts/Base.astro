@@ -36,13 +36,22 @@ const fullTitle = title === tr('site.name') ? title : `${title} · ${tr('site.na
     {blogEnabled && <link rel="alternate" type="application/rss+xml" title={`${tr('site.name')} · ${tr('blog.rss')}`} href={localePath(locale, 'rss.xml').replace(/\/$/, '')} />}
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icon-512.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={tr('site.name')} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description ?? tr('site.description')} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL(image, site).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={tr('about.headshotAlt')} />
     <meta property="og:locale" content={locale === 'fr' ? 'fr_CA' : 'en_CA'} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description ?? tr('site.description')} />
+    <meta name="twitter:image" content={new URL(image, site).href} />
     <meta name="color-scheme" content="light dark" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
