@@ -1,0 +1,35 @@
+.home-hero { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: center; padding-top: 40px; padding-bottom: 72px; }
+.home-hero .copy { display: flex; flex-direction: column; gap: 28px; }
+.home-hero .lede { font-size: 18px; max-width: 540px; margin: 0; }
+.home-hero .ctas { display: flex; gap: 32px; }
+.home-contributions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; }
+.home-contributions .card { display: flex; flex-direction: column; gap: 16px; padding: 22px; min-width: 0; }
+.home-contributions .sel { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px; }
+.home-contributions .sel li { display: block; }
+.home-contributions .sel li::after { content: ''; display: block; clear: both; }
+.home-contributions .entry-copy { min-width: 0; }
+.home-contributions .serif { font-size: 21px; line-height: 1.3; color: var(--fg); }
+.home-contributions a:hover { color: var(--acc); }
+.home-contributions .sub { font-size: 14px; line-height: 1.5; color: var(--mute); margin: 4px 0 0; }
+.home-contributions .more { color: var(--acc); margin-top: auto; }
+.home-contributions .thumbnail { float: right; display: block; width: 64px; height: 64px; margin: 4px 0 8px 16px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--card-shadow); background: #f4efe4; }
+.home-contributions .thumbnail img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 200ms ease; }
+.home-contributions .thumbnail:hover img { transform: scale(1.04); }
+.home-contributions a:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; }
+.home-contributions .news-link { display: inline-block; font-size: 13px; margin-top: 16px; }
+@media (max-width: 1100px) {
+  .home-contributions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-contributions .news-card { grid-column: 1 / -1; }
+}
+@media (max-width: 900px) {
+  .home-hero { grid-template-columns: 1fr; gap: 32px; }
+  .home-hero .frame { max-width: 260px; }
+  .home-contributions { grid-template-columns: 1fr; }
+}
+@media (max-width: 420px) { .home-contributions .card { padding: 20px; } }
+
+.home-contributions .news-date { display: block; font-size: 12px; color: var(--mute); margin-bottom: 8px; }
+
+.organization-link { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.organization-link:hover { color: var(--acc); text-decoration-color: currentColor; }
+.organization-link:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; }

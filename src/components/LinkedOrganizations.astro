@@ -1,0 +1,16 @@
+---
+import type { Locale } from '../i18n/ui';
+interface Props { text: string; locale: Locale }
+const { text, locale } = Astro.props;
+const links: Record<string, string> = {
+  'Nera Software': 'https://nera.software/',
+  'Polytechnique Montréal': 'https://www.polymtl.ca/',
+  'Mila': `https://mila.quebec/${locale}`,
+  'ServiceNow': 'https://www.servicenow.com/',
+  'Element AI': 'https://newsroom.servicenow.com/press-releases/details/2020/ServiceNow-to-Acquire-AI-Pioneer-Element-AI-11-30-2020-12-00-AM/default.aspx',
+  'ApSTAT': 'https://www.apstat.com',
+  'Chapados Couture Capital': locale === 'fr' ? 'https://www.chapados-couture.com/fr/' : 'https://www.chapados-couture.com/',
+};
+const parts = text.split(/(Nera Software|Polytechnique Montréal|Mila|ServiceNow|Element AI|ApSTAT|Chapados Couture Capital)/g);
+---
+{parts.map((part) => links[part] ? <a class="organization-link" href={links[part]}>{part}</a> : part)}

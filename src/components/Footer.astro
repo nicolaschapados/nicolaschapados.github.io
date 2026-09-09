@@ -12,13 +12,12 @@ const year = new Date().getFullYear();
       <li><a href="#" data-email data-u={emailParts.user} data-d={emailParts.domain}>{tr('footer.email')}</a></li>
       <li><a href={social.scholar} rel="me">Google Scholar</a></li>
       <li><a href={social.linkedin} rel="me">LinkedIn</a></li>
-      <li><a href={social.bluesky} rel="me">Bluesky</a></li>
       <li><a href={social.x} rel="me">X</a></li>
       <li><a href={social.github} rel="me">GitHub</a></li>
       <li><a href={social.openreview} rel="me">OpenReview</a></li>
       {blogEnabled && <li><a href={localePath(locale, 'rss.xml').replace(/\/$/, '')}>RSS</a></li>}
     </ul>
-    <div class="colophon">{tr('footer.place')} · chapados.ca · © {year} {tr('footer.rights')}</div>
+    <div class="colophon"><a href={localePath(locale)}>chapados.ca</a> · © {year} {tr('footer.rights')}</div>
   </div>
 </footer>
 <script>

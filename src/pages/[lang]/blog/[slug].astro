@@ -28,7 +28,6 @@ const share = encodeURIComponent(`${post.data.title} ${url}`);
     <div class="prose"><Content /></div>
     <footer class="discuss">
       <span class="lab">{tr('blog.discuss')}</span>
-      <a href={`https://bsky.app/intent/compose?text=${share}`} rel="external">Bluesky</a>
       <a href={`https://x.com/intent/post?text=${share}`} rel="external">X</a>
       <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`} rel="external">LinkedIn</a>
     </footer>
