@@ -37,10 +37,13 @@ scripts/cv-sync.mjs       # the CV sync
 tests/                    # seam 1: built output; seam 2: cv-sync against tests/fixtures/cv
 ```
 
-## Going live (manual, once)
+## Repositories and going live
 
-1. Make this repository public (GitHub Pages on a private repo needs a paid plan).
-2. Settings → Pages → Source: GitHub Actions. Merge to `main`; the workflow builds, tests and deploys.
-3. Settings → Pages → Custom domain: `chapados.ca` (the `public/CNAME` file matches). Enable "Enforce HTTPS" once the certificate is issued.
-4. At Gandi, for `chapados.ca`: four `A` records at the apex pointing to GitHub Pages' IPs (185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153) and a `CNAME` for `www` to `nicolaschapados.github.io`.
-5. Forward the other domains with a permanent (301) redirect to `https://chapados.ca`: `chapadosresearch.org` at Gandi; `portfolioparadigms.com` at Wild West Domains, once the decision on its WordPress posts is made.
+The site is served from the public repository `nicolaschapados/nicolaschapados.github.io` (branch `main`, Pages source: GitHub Actions) at https://nicolaschapados.github.io/. The private `nicolaschapados/bio` repository holds the same history plus the earlier design work; its history was rewritten to remove a non-public CV before the public repo was created from it.
+
+Remaining manual steps for the custom domain:
+
+1. Push to `main` on the public repo; the workflow builds, tests and deploys.
+2. Settings → Pages → Custom domain: `chapados.ca` (the `public/CNAME` file matches). Enable "Enforce HTTPS" once the certificate is issued.
+3. At Gandi, for `chapados.ca`: four `A` records at the apex pointing to GitHub Pages' IPs (185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153) and a `CNAME` for `www` to `nicolaschapados.github.io`.
+4. Forward the other domains with a permanent (301) redirect to `https://chapados.ca`: `chapadosresearch.org` at Gandi; `portfolioparadigms.com` at Wild West Domains, once the decision on its WordPress posts is made.
