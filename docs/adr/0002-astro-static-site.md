@@ -10,5 +10,5 @@ The site needs a bespoke look ("professional, fresh and modern, with a touch of 
 ## Consequences
 
 - A Node toolchain and lockfile live in the repo; `npm` is used (no pnpm installed).
-- The repo must be public before Pages can serve it: GitHub Pages on a private repository requires a paid plan, and `bio` is private today. Git LFS must not be used for the PDFs, since Pages does not serve LFS objects.
+- GitHub Pages on a private repository requires a paid plan, so the site is served from the public repo `nicolaschapados/nicolaschapados.github.io`, created on 2026-09-08 from the rewritten history of the private `bio` repo (a non-public CV had been committed and was purged first). Git LFS must not be used for the PDFs, since Pages does not serve LFS objects.
 - Publication PDFs are committed to the repo and served as static files (the source `cv` repo is private, so raw links would not work).
