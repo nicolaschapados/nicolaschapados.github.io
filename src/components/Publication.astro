@@ -52,7 +52,7 @@ const vignetteTitle = vignette ? `${locale === 'fr' ? 'Synthèse visuelle géné
   .links { display: flex; gap: 18px; align-items: baseline; margin-top: 10px; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; flex-wrap: wrap; }
   .bib { display: inline; } .bib summary { cursor: pointer; color: var(--acc); list-style: none; } .bib summary::-webkit-details-marker { display: none; }
   .bib[open] { display: block; flex-basis: 100%; clear: both; }
-  .bib pre { font-size: 12px; text-transform: none; letter-spacing: 0; margin: 10px 0 6px; }
+  .bib pre { font-size: 12px; text-transform: none; letter-spacing: 0; margin: 10px 0 6px; white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; max-width: 100%; }
   .bib button { font: inherit; letter-spacing: 0.08em; text-transform: uppercase; background: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; color: var(--acc); cursor: pointer; }
   @media (max-width: 560px) { .vignette { width: 72px; height: 72px; margin: 0 5ex 8px 14px; } }
 </style>

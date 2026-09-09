@@ -101,7 +101,8 @@ const sectionLabel = (s: string) => tr(`section.${s}` as any);
   .view button { font: inherit; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; background: none; border: 0; padding: 4px 12px; border-radius: 999px; color: var(--mute); cursor: pointer; }
   .view button.on { background: var(--acc); color: var(--bg); }
   .search input { font: inherit; font-size: 15px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--fg); min-width: 280px; }
-  .layout { display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; }
+  .layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 48px; align-items: start; }
+  .lists { min-width: 0; }
   .toc { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
   .toc a { color: var(--sub); } .toc a:hover { color: var(--acc); } .toc span { color: var(--mute); font-variant-numeric: tabular-nums; margin-left: 6px; }
   .group { margin-bottom: 48px; } .group h2 { margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--acc); }
