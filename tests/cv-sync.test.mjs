@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { sync, toSiteRecords, newestCvPdf, normalizeAuthor } from '../scripts/cv-sync.mjs';
+import { sync, toSiteRecords, newestCvPdf, normalizeAuthor, deLatex } from '../scripts/cv-sync.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const fixtureCv = path.join(here, 'fixtures', 'cv');
@@ -71,6 +71,10 @@ describe('CV sync', () => {
     expect(recs[0].authors).toEqual(['A', 'B']);
     expect(normalizeAuthor('Chapados, Nicolas')).toBe('Nicolas Chapados');
     expect(normalizeAuthor('Boris N. Oreshkin')).toBe('Boris N. Oreshkin');
+    expect(normalizeAuthor("\\'Etienne Marcotte")).toBe('Étienne Marcotte');
+    expect(normalizeAuthor("Marcotte, \\'{E}tienne")).toBe('Étienne Marcotte');
+    expect(deLatex('Fran\\c{c}ois M\\"uller and Jo\\~ao {Bengio}')).toBe('François Müller and João Bengio');
+    expect(deLatex('The {N-BEATS} model')).toBe('The N-BEATS model');
     expect(toSiteRecords([{ key: 'y', section: 'refconf', type: 'inproceedings', year: 2020, title: 'T', authors: ['Oreshkin, Boris N.', 'Chapados, Nicolas'], pdf: null }], [])[0].authors).toEqual(['Boris N. Oreshkin', 'Nicolas Chapados']);
     expect(recs[0].year).toBe(2009);
     expect(fs.readFileSync(path.join(here, '..', 'scripts', 'cv-sync.mjs'), 'utf8')).not.toMatch(/\.tex/);

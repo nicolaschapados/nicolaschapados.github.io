@@ -1,0 +1,10 @@
+{
+  "_comment": "Conceptual syntheses generated with ChatGPT for the home page (prompts in docs/design/homepage-options/prompts.json). Keyed by BibTeX key; images live in public/images/synthesis/. Not publication figures.",
+  "oreshkin2019n": { "image": "nbeats", "label": "N-BEATS", "alt": { "en": "A trend ribbon and a seasonal ribbon combining into one forecast curve", "fr": "Un ruban de tendance et un ruban saisonnier qui se combinent en une seule courbe de prévision" } },
+  "lozhkov2024starcoder2": { "image": "starcoder2", "label": "StarCoder 2", "alt": { "en": "Conceptual illustration of open code models built from a large public code corpus", "fr": "Illustration conceptuelle de modèles de code ouverts issus d’un grand corpus public" } },
+  "behnamghader2024llm2vec": { "image": "llm2vec", "label": "LLM2Vec", "alt": { "en": "Conceptual illustration of a language model turned into a text encoder", "fr": "Illustration conceptuelle d’un modèle de langue transformé en encodeur de texte" } },
+  "drouin2024workarena": { "image": "workarena", "label": "WorkArena", "alt": { "en": "Conceptual illustration of a web agent working through enterprise software tasks", "fr": "Illustration conceptuelle d’un agent web accomplissant des tâches dans un logiciel d’entreprise" } },
+  "boisvert2024workarenapp": { "image": "workarenapp", "label": "WorkArena++", "alt": { "en": "Conceptual illustration of compositional, multi-step knowledge-work tasks", "fr": "Illustration conceptuelle de tâches de travail intellectuel composées en plusieurs étapes" } },
+  "williams2025cik": { "image": "context-is-key", "label": "Context is Key", "alt": { "en": "Conceptual illustration of a forecast informed by textual context", "fr": "Illustration conceptuelle d’une prévision éclairée par un contexte textuel" } },
+  "chezelles2025browsergym": { "image": "browsergym", "label": "BrowserGym", "alt": { "en": "Conceptual illustration of a shared environment for evaluating web agents", "fr": "Illustration conceptuelle d’un environnement commun pour évaluer des agents web" } }
+}

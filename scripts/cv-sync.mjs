@@ -29,10 +29,23 @@ export function arxivId(record) {
   return m ? m[1] : null;
 }
 
-/** "Last, First" → "First Last"; anything else unchanged. */
+/** Remove LaTeX residue the manifest cleaner leaves behind: accents like \\'E or \\"u, \\c{c}, and stray braces. */
+export function deLatex(s) {
+  const marks = { "'": '\u0301', '`': '\u0300', '^': '\u0302', '"': '\u0308', '~': '\u0303', '=': '\u0304', '.': '\u0307', 'v': '\u030c', 'u': '\u0306', 'H': '\u030b', 'c': '\u0327', 'k': '\u0328', 'r': '\u030a' };
+  return String(s)
+    .replace(/\\([`'^"~=.])\{?([A-Za-z])\}?/g, (_, m, ch) => (ch + marks[m]).normalize('NFC'))
+    .replace(/\\([vuHckr])\{([A-Za-z])\}/g, (_, m, ch) => (ch + marks[m]).normalize('NFC'))
+    .replace(/\\i\b/g, 'ı').replace(/\\ss\b/g, 'ß').replace(/\\o\b/g, 'ø').replace(/\\O\b/g, 'Ø').replace(/\\ae\b/g, 'æ').replace(/\\oe\b/g, 'œ')
+    .replace(/\\(?:emph|textit|textbf|text|mathrm|mbox)\{([^{}]*)\}/g, '$1')
+    .replace(/[{}]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/** "Last, First" → "First Last", LaTeX residue removed; anything else unchanged. */
 export function normalizeAuthor(a) {
-  const parts = String(a).split(',').map((x) => x.trim()).filter(Boolean);
-  return parts.length === 2 ? `${parts[1]} ${parts[0]}` : String(a).trim();
+  const parts = deLatex(a).split(',').map((x) => x.trim()).filter(Boolean);
+  return parts.length === 2 ? `${parts[1]} ${parts[0]}` : deLatex(a);
 }
 
 /** Turn manifest records into the site's publications.json records. Pure. */
@@ -46,9 +59,9 @@ export function toSiteRecords(records, exclude) {
       section: r.section,
       type: r.type,
       year: Number(r.year),
-      title: r.title,
+      title: deLatex(r.title),
       authors: (Array.isArray(r.authors) ? r.authors : String(r.authors ?? '').split(/\s+and\s+|;\s*/)).map(normalizeAuthor).filter(Boolean),
-      venue: r.venue || null,
+      venue: r.venue ? deLatex(r.venue) : null,
       doi: r.doi || null,
       url: r.url || r.source_url || null,
       arxiv: arxivId(r),
