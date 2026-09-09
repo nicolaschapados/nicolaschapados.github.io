@@ -15,7 +15,7 @@ const selectedPubs = (await Promise.all(selected.map(async (s) => ({ note: s.dat
 const patents = (await getCollection('patents')).sort((a, b) => (b.data.granted ?? 9999) - (a.data.granted ?? 9999));
 const sectionLabel = (s: string) => tr(`section.${s}` as any);
 ---
-<Base locale={locale} title={tr('pub.title')} path="publications">
+<Base locale={locale} title={tr('pub.title')} path="publications" image={`/og/publications-${locale}.jpg`}>
   <section class="wrap" style="padding-top: 32px;">
     <h1>{tr('pub.title')}</h1>
     <p class="intro">{tr('pub.intro')} <span class="count">{pubs.length} {tr('pub.count')}.</span></p>

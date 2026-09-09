@@ -11,7 +11,7 @@ const entry = (await getCollection('about')).find((e) => e.data.locale === local
 if (!entry) throw new Error(`No about page for locale ${locale}`);
 const { Content } = await render(entry);
 ---
-<Base locale={locale} title={tr('about.title')} path="about">
+<Base locale={locale} title={tr('about.title')} path="about" image={`/og/about-${locale}.jpg`}>
   <article class="wrap" style="padding-top: 32px;">
     <h1>{tr('about.title')}</h1>
     <div class="prose" style="margin-top: 32px;"><Content /></div>

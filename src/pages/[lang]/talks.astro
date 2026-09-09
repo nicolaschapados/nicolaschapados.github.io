@@ -9,7 +9,7 @@ const talks = (await getCollection('talks')).sort((a, b) => b.data.date.localeCo
 const fmt = (d: string) => new Date(`${d}-15`).toLocaleDateString(locale === 'fr' ? 'fr-CA' : 'en-CA', { year: 'numeric', month: 'long', timeZone: 'UTC' });
 const kindLabel: Record<string, Record<Locale, string>> = { keynote: { en: 'Keynote', fr: 'Conférence plénière' }, lecture: { en: 'Guest lecture', fr: 'Cours magistral' }, invited: { en: 'Invited talk', fr: 'Présentation invitée' }, panel: { en: 'Panel', fr: 'Table ronde' } };
 ---
-<Base locale={locale} title={tr('talks.title')} path="talks">
+<Base locale={locale} title={tr('talks.title')} path="talks" image={`/og/talks-${locale}.jpg`}>
   <section class="wrap" style="padding-top: 32px;">
     <h1>{tr('talks.title')}</h1>
     <p class="intro">{tr('talks.intro')}</p>
