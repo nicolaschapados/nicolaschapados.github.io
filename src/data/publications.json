@@ -1234,6 +1234,24 @@
     "pdf": "/papers/PCKLT:MIND:1999.pdf"
   },
   {
+    "id": "hattami2026skillnb",
+    "key": "hattami2026skillnb",
+    "section": "workshop",
+    "type": "inproceedings",
+    "year": 2026,
+    "title": "SKILL.nb: Selective Formalization and Gated Execution for Durable Agent Workflows",
+    "authors": [
+      "Amine El Hattami",
+      "Nicolas Chapados",
+      "Christopher Pal"
+    ],
+    "venue": "ICML 2026 Workshop on Failure Modes in Agentic AI (FAGEN)",
+    "doi": null,
+    "url": "https://openreview.net/forum?id=zYh5EVYEtq",
+    "arxiv": "2606.08049",
+    "pdf": "/papers/hattami2026skillnb.pdf"
+  },
+  {
     "id": "boisvert2025silentsabotage",
     "key": "boisvert2025silentsabotage",
     "section": "workshop",
@@ -1302,6 +1320,30 @@
     "url": "https://openreview.net/forum?id=SkwtxEkst2",
     "arxiv": null,
     "pdf": "/papers/caccia2024finetuning.pdf"
+  },
+  {
+    "id": "laradji2023ctf",
+    "key": "laradji2023ctf",
+    "section": "workshop",
+    "type": "inproceedings",
+    "year": 2023,
+    "title": "Capture the Flag: Uncovering Data Insights with Large Language Models",
+    "authors": [
+      "Issam Laradji",
+      "Perouz Taslakian",
+      "Sai Rajeswar",
+      "Valentina Zantedeschi",
+      "Alexandre Lacoste",
+      "Nicolas Chapados",
+      "David Vázquez",
+      "Christopher Pal",
+      "Alexandre Drouin"
+    ],
+    "venue": "NeurIPS 2023 Workshop on Foundation Models for Decision Making",
+    "doi": null,
+    "url": "https://openreview.net/forum?id=fkz5VfJCwo",
+    "arxiv": "2312.13876",
+    "pdf": "/papers/laradji2023ctf.pdf"
   },
   {
     "id": "rasul2023laglama",
@@ -1582,24 +1624,6 @@
     "pdf": "/papers/C:COAA:2000.pdf"
   },
   {
-    "id": "hattami2026skillnb",
-    "key": "hattami2026skillnb",
-    "section": "techrep",
-    "type": "misc",
-    "year": 2026,
-    "title": "SKILL.nb: Selective Formalization and Gated Execution for Durable Agent Workflows",
-    "authors": [
-      "Amine El Hattami",
-      "Nicolas Chapados",
-      "Christopher Pal"
-    ],
-    "venue": null,
-    "doi": null,
-    "url": "https://arxiv.org/abs/2606.08049",
-    "arxiv": "2606.08049",
-    "pdf": "/papers/hattami2026skillnb.pdf"
-  },
-  {
     "id": "radhakrishna2025apriel",
     "key": "radhakrishna2025apriel",
     "section": "techrep",
@@ -1739,30 +1763,6 @@
     "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4493166",
     "arxiv": null,
     "pdf": "/papers/chapados2023can.pdf"
-  },
-  {
-    "id": "laradji2023ctf",
-    "key": "laradji2023ctf",
-    "section": "techrep",
-    "type": "misc",
-    "year": 2023,
-    "title": "Capture the Flag: Uncovering Data Insights with Large Language Models",
-    "authors": [
-      "Issam Laradji",
-      "Perouz Taslakian",
-      "Sai Rajeswar",
-      "Valentina Zantedeschi",
-      "Alexandre Lacoste",
-      "Nicolas Chapados",
-      "David Vázquez",
-      "Christopher Pal",
-      "Alexandre Drouin"
-    ],
-    "venue": null,
-    "doi": null,
-    "url": "https://arxiv.org/abs/2312.13876",
-    "arxiv": "2312.13876",
-    "pdf": "/papers/laradji2023ctf.pdf"
   },
   {
     "id": "1806.00852",
