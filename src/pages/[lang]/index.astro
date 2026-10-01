@@ -60,6 +60,12 @@ const fmtMonth = (d: string) => new Date(`${d}-15`).toLocaleDateString(locale ==
     <div class="card news-card">
       <div class="lab">{tr('home.news')}</div>
       <div class="news-item">
+        <time class="news-date" datetime="2026-09-24">{locale === 'fr' ? '24 septembre 2026' : 'September 24, 2026'}</time>
+        <a class="serif" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7508904470123171841/">{tr('home.milaPanel')}</a>
+        <p class="sub"><LinkedOrganizations text={tr('home.milaPanelNote')} locale={locale} /></p>
+        <a class="news-link" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7508904470123171841/">{tr('home.readAnnouncement')} <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="news-item">
         <time class="news-date" datetime="2026-09-08">{locale === 'fr' ? '8 septembre 2026' : 'September 8, 2026'}</time>
         <a class="serif" href="https://www.linkedin.com/feed/update/urn:li:activity:7503149578171494400/">{tr('home.neraLaunch')}</a>
         <p class="sub"><LinkedOrganizations text={tr('home.neraLaunchNote')} locale={locale} /></p>
