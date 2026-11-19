@@ -7,7 +7,7 @@ A static site at chapados.ca presenting Nicolas Chapados' biography, complete pu
 ### Publications
 
 **Publication**:
-One bibliographic entry from the CV, identified by its BibTeX key. There are 91.
+One bibliographic entry from the CV, identified by its BibTeX key. There are 92.
 _Avoid_: paper (too narrow: books, theses and reports are publications too), reference
 
 **Section**:
@@ -18,7 +18,7 @@ _Avoid_: category, type (type is the BibTeX entry type, which can disagree with 
 One patent family from the CV with its legal status. Patents are listed on the Publications page but are not publications and are not in the manifest; they are hand-maintained site data.
 
 **Archived PDF**:
-The copy of a publication stored in the CV repo's archive and served by this site. 13 publications have none; those with a DOI or URL link there, the rest are listed without a link.
+The copy of a publication stored in the CV repo's archive and served by this site. 11 publications have none; those with a DOI or URL link there, the rest are listed without a link.
 _Avoid_: attachment, local PDF
 
 **Manifest**:

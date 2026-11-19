@@ -1234,6 +1234,24 @@
     "pdf": "/papers/PCKLT:MIND:1999.pdf"
   },
   {
+    "id": "chapados2026metrics",
+    "key": "chapados2026metrics",
+    "section": "workshop",
+    "type": "inproceedings",
+    "year": 2026,
+    "title": "Metrics-in-the-Loop: Complexity Feedback Reshapes Agent-Written Code",
+    "authors": [
+      "Nicolas Chapados",
+      "Jean-François Gagné",
+      "Nouha Dziri"
+    ],
+    "venue": "Agent Evaluation Science Symposium",
+    "doi": null,
+    "url": "https://arxiv.org/abs/2611.23817",
+    "arxiv": "2611.23817",
+    "pdf": "/papers/chapados2026metrics.pdf"
+  },
+  {
     "id": "hattami2026skillnb",
     "key": "hattami2026skillnb",
     "section": "workshop",
